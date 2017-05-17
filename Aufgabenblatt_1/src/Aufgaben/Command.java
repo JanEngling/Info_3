@@ -15,6 +15,7 @@ public abstract class Command implements ICommand {
 	 * @return gibt Name des Commands zurück
 	 */
 	public String getName() {
+		System.out.println("Penis");
 		return name;
 	}
 
