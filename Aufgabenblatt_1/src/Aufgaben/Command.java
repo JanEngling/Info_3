@@ -26,5 +26,7 @@ public abstract class Command implements ICommand {
 	public void setName(String s) {
 		this.name = s;
 	}
+	
+	System.out.println("efnevnfejjf");
 
 }
