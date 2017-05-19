@@ -3,24 +3,25 @@ package Aufgaben;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
 
 /**
- * Erzeug Command und implemenetiert Interface zur besseren Handhabung
+ * Erzeug Command und implmenetiert Interface zur besseren Handhabung
  * 
- * @author Andreas & Jan
+ * @author Jan
  * @version 1.0
  */
 public abstract class Command implements ICommand {
 	private String name;
 
 	/**
-	 * @return Gibt Name des Commands zurück
+	 * @return gibt Name des Commands zurück
 	 */
 	public String getName() {
+		System.out.println("Penis");
 		return name;
 	}
 
 	/**
 	 * @param s
-	 *            Übernimmt eingegebenen String
+	 *            übernimmt einegegebenen String
 	 */
 	public void setName(String s) {
 		this.name = s;

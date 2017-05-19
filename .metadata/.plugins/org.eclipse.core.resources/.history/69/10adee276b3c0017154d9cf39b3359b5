@@ -5,7 +5,7 @@ import hsrt.mec.controldeveloper.core.com.command.IGear;
 /**
  * Geschwindigkeit und Dauer der Bewegung, implementiert Interface
  * 
- * @author Andreas & Jan
+ * @author Jan
  * @version 1.0
  */
 public class Gear extends Command implements IGear {
@@ -13,7 +13,7 @@ public class Gear extends Command implements IGear {
 	private double duration;
 
 	/**
-	 * Konstruktor, übergebene Geschwindigkeit und Dauer wird übernommen
+	 * Konstruktor, übergebene geschwindigkeit und Dauer wird übernommen
 	 * 
 	 * @param speed
 	 *            Geschwindigkeit des Fahrzeugs
@@ -27,7 +27,7 @@ public class Gear extends Command implements IGear {
 	}
 
 	/**
-	 * Standartkonstruktor, Dauer und Geschwindigkeit werden beide mit Null
+	 * Standartkonstruktor, Dauer und geschwindigkeit werden beide mit Null
 	 * initialisiert
 	 */
 	public Gear() {
@@ -37,14 +37,14 @@ public class Gear extends Command implements IGear {
 	}
 
 	/**
-	 * @return Gibt Geschwindigkeit zurück
+	 * @return gibt Geschwindigkeit zurück
 	 */
 	public int getSpeed() {
 		return speed;
 	}
 
 	/**
-	 * @return Gibt Dauer der Bewegung zurück
+	 * @return gibt Dauer der Bewegung zurück
 	 */
 	public double getDuration() {
 		return duration;
@@ -60,14 +60,14 @@ public class Gear extends Command implements IGear {
 
 	/**
 	 * @param duration
-	 *            Übergebene Dauer wird übernommen
+	 *            Übergebene dauer wird übernommen
 	 */
 	public void setDuration(double duration) {
 		this.duration = duration;
 	}
 
 	/**
-	 * @return Gibt Geschwindigkeit und Dauer als String zurück
+	 * @return gibt Geschwindigkeit und Dauer als String zurück
 	 */
 	public String toString() {
 		return "Gear [speed=" + speed + ", duration=" + duration + "]";
