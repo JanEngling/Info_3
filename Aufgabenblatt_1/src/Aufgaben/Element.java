@@ -3,7 +3,7 @@ package Aufgaben;
 /**
  * Element ist ein Element einer Liste. 
  * Hier sind die Methoden implementiert um auf die Variablen zu zugreifen.  
- * @author Andreas Sautter
+ * @author Andreas Sautter u. Jan Engling
  * @version 1.0
  * @since JDK 1.8
  * 
