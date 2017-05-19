@@ -1,17 +1,10 @@
 package Aufgaben;
 
-/**
- * Beschreibt alle möglichen Commands in einer Liste
- * 
- * @author Andreas Sautter u. Jan Engling
- * @version 1.0
- * @since JDK 1.8
- */
 public class CommandType {
 	private String name;
 
 	/**
-	 * @return Gibt Namen des CommandTypes zurück
+	 * @return the name
 	 */
 	public String getName() {
 		return name;
@@ -19,28 +12,21 @@ public class CommandType {
 
 	/**
 	 * @param name
-	 *            Übernimmt den übergebenen String als Name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Konstruktor: Übergebener String wird als Name übernommen
+	 * Konstruktor
 	 * 
-	 * @param Übergebener
-	 *            String wird als Name übernommen
+	 * @param name
 	 */
 	public CommandType(String name) {
 		this.name = name;
 	}
 
-	/**
-	 * Erstellt die Instanc eines Commands gemäß des Aufgerufenen Namen
-	 * 
-	 * @return Gibt Element Command gemäß des geholten Namen zurück, null wenn
-	 *         String verschieden der 4 Vorgegebenen
-	 */
 	public Command createInstance() { // holt namen über getString und erzeugt
 		if (getName() == "Direction") {
 			return new Direction();

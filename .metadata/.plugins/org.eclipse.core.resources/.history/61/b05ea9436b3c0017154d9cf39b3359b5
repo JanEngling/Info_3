@@ -5,17 +5,17 @@ import hsrt.mec.controldeveloper.core.com.command.IPause;
 /**
  * Handled Funktionalitäten der Pause des Fahrzeugs und implementiert Interface
  *
- * @author Andreas & Jan
+ * @author Jan
  * @version 1.0
  */
 public class Pause extends Command implements IPause {
 	private double duration;
 
 	/**
-	 * Konstruktor Übergebene Pause wird übernommen
+	 * Konstruktor Übergebene pause wird übernommen
 	 * 
 	 * @param duration
-	 *            Dauer der Pause
+	 *            Dauer der pause
 	 */
 	public Pause(double duration) {
 		this.setName("Pause");
@@ -23,7 +23,7 @@ public class Pause extends Command implements IPause {
 	}
 
 	/**
-	 * Standartkonstruktor, Pause wird auf 1000 Takte gesetzt
+	 * Standartkonstruktor, Pause wird auf 1000 takte gesetzt
 	 */
 	public Pause() {
 		this.setName("Pause");
@@ -39,7 +39,7 @@ public class Pause extends Command implements IPause {
 	}
 
 	/**
-	 * @return Gibt Dauer der Pause zurück
+	 * @return gibt Dauer der Pause zurück
 	 */
 	public double getDuration() {
 		return duration;

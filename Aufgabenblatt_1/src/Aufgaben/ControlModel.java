@@ -1,5 +1,12 @@
 package Aufgaben;
 
+/**
+ * Controler der beiden Listen, implementiert IOType
+ * 
+ * @author Andreas Sautter u. Jan Engling
+ * @version 1.0
+ * @since JDK 1.8
+ */
 import java.io.File;
 import java.util.Vector;
 
@@ -10,43 +17,85 @@ public class ControlModel implements IOType {
 	private static CommandType[] commandTypes = new CommandType[4];
 	private static CommandList controlProcess;
 
-	//File file =new File("C:\Users\Jan\Desktop\Hochschule\SS17_17\Informatik 3");
-	private ControlModel() { // Standartkonstruktor
+	// File file =new File("C:\Users\Jan\Desktop\Hochschule\SS17_17\Informatik
+	// 3");
+	/**
+	 * Standartkonstruktor von ControlModel
+	 */
+	private ControlModel() {
 	}
-	public ControlModel getInstance(){
+
+	/**
+	 * Holt Instance ???
+	 * 
+	 * @return Gibt ControlModel zurück
+	 */
+	public ControlModel getInstance() {
 		return null;
 	}
+
 	/**
 	 * Befüllt erste Liste mit allen CommandType Objekten
 	 */
-	public void createCommandTypes(){
+	public void createCommandTypes() {
 
 	}
-	public boolean load(/*File*/){
+
+	/**
+	 * Läd Strings aus einer vorher erzeugten Datei
+	 * 
+	 * @return true wenn erfolgreich, false wenn erfolglos
+	 */
+	public boolean load(/* File */) {
 		return true;
 	}
-	public boolean save(){
+
+	/**
+	 * Speichert Liste als Strings in Datei
+	 * 
+	 * @return true wenn erfolgreich, false wenn erfolglos
+	 */
+	public boolean save() {
 		return true;
 	}
-	public void commandPerformed(Command c){
-		
+
+	/**
+	 * ???
+	 * 
+	 * @param c
+	 *            Bekommt Command übergeben
+	 */
+	public void commandPerformed(Command c) {
+
 	}
-	public CommandList getControlProcess(){
+
+	/**
+	 * ??
+	 * 
+	 * @return
+	 */
+	public CommandList getControlProcess() {
 		return null;
 	}
-	@Override
+
+	/**
+	 * ???
+	 */
 	public boolean close() {
-		// TODO Auto-generated method stub
 		return false;
 	}
-	@Override
+
+	/**
+	 * Liest aus einer Datei ???
+	 */
 	public boolean read(Vector<String> arg0) {
-		// TODO Auto-generated method stub
 		return false;
 	}
-	@Override
+
+	/**
+	 * Schreibt in eine Datei???
+	 */
 	public boolean write(Vector<String> arg0) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

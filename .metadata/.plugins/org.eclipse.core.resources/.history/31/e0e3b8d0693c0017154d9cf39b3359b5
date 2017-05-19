@@ -3,7 +3,7 @@ package Aufgaben;
 /**
  * Controler der gesamten Funktionalität des Programms
  * 
- * @author Andreas & Jan
+ * @author Jan
  * @version 1.0
  */
 public class ControlDeveloper {
@@ -12,7 +12,7 @@ public class ControlDeveloper {
 	private static Command[] commands = new Command[10];
 
 	/**
-	 * @return Gibt den Namen des ControlDevelopers zurück
+	 * @return gibt den Namen des ControlDevelopers zurück
 	 */
 	public String getName() {
 		return name;
@@ -20,14 +20,14 @@ public class ControlDeveloper {
 
 	/**
 	 * @param name
-	 *            Übergebener Name wird Name des ControlDevelopers
+	 *            Übergebener name wird Name des ControlDevelopers
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Hauptprogramm zeigt Funktionalität der Unterklassen
+	 * Hauptprogramm zeigt Funktionalität der Unterclassen
 	 * 
 	 * @param s
 	 *            Überabeparameter an main
@@ -60,7 +60,7 @@ public class ControlDeveloper {
 	}
 
 	/**
-	 * Fügt hardcoded Beispiel Commands in Array ein
+	 * Fügt hardcoded Beispiel Commands in die Liste ein
 	 * 
 	 * @param commands
 	 *            Array aus Beispiel Commands
@@ -73,7 +73,7 @@ public class ControlDeveloper {
 	}
 
 	/**
-	 * Gibt alle in Array enthaltenne Commands aus
+	 * gibt alle in Array enthaltenne Commands aus
 	 * 
 	 * @param commands
 	 *            Array aus Beispiel Commands

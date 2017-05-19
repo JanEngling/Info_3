@@ -3,10 +3,10 @@ package Aufgaben;
 import hsrt.mec.controldeveloper.core.com.command.IDirection;
 
 /**
- * Gibt Richtung der Fahrzeugbewegung an, implementiert Interface und
+ * Gibt Richtung der fahrzeugbewegung an, implementiert Interface und
  * Funktionalitäten
  * 
- * @author Andreas & Jan
+ * @author Jan
  * @version 1.0
  */
 public class Direction extends Command implements IDirection {
@@ -16,7 +16,7 @@ public class Direction extends Command implements IDirection {
 	 * Konstruktor mit selbst gewählter Richtung
 	 * 
 	 * @param degree
-	 *            Gibt Winkle der Bewegung an
+	 *            gibt Winkle der Bewegung an
 	 */
 	public Direction(int degree) {
 		this.setName("Direction");
@@ -24,7 +24,7 @@ public class Direction extends Command implements IDirection {
 	}
 
 	/**
-	 * Standartkonstruktor mit vorgegebener Richtung
+	 * Standartkonstructor mit vorgegebener Richtung
 	 */
 	public Direction() {
 		this.setName("Direction");
@@ -32,7 +32,7 @@ public class Direction extends Command implements IDirection {
 	}
 
 	/**
-	 * @return Gibt Richtung zurück
+	 * @return gibt Richtung zurück
 	 */
 	public int getDegree() {
 		return degree;
@@ -47,7 +47,7 @@ public class Direction extends Command implements IDirection {
 	}
 
 	/**
-	 * @return Gibt Richtung als String zurück
+	 * @return gibt Richtung als String zurück
 	 */
 	public String toString() {
 		return "Direction [degree=" + degree + "]";

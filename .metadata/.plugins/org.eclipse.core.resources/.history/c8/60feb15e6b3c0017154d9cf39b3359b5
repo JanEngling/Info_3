@@ -6,7 +6,7 @@ import hsrt.mec.controldeveloper.core.com.command.IRepetition;
  * Implementiert Interface und Funktionalitäten zur Verwaltung der
  * Wiederholungen von Befehlen
  * 
- * @author Andreas & Jan
+ * @author Jan
  * @version 1.0
  */
 public class Repetition extends Command implements IRepetition {
@@ -39,7 +39,7 @@ public class Repetition extends Command implements IRepetition {
 	}
 
 	/**
-	 * @return Gibt Anzahl der Wiederholungen zurück
+	 * @return gibt Anzahl der Wiederolungen zurück
 	 */
 	public int getNrRepetitions() {
 		return nrRepetitions;
