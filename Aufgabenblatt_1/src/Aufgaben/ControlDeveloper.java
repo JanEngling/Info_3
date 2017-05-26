@@ -1,5 +1,8 @@
 package Aufgaben;
 
+import java.io.File;
+import java.util.Vector;
+
 /**
  * Controler der gesamten Funktionalität des Programms
  * 
@@ -10,7 +13,7 @@ public class ControlDeveloper {
 	private static String name = "Control Developer";
 	private static CommandList commandList = new CommandList();
 	private static Command[] commands = new Command[10];
-
+	private static ControlDeveloper cd1 = new ControlDeveloper();
 	/**
 	 * @return Gibt den Namen des ControlDevelopers zurück
 	 */
@@ -33,29 +36,16 @@ public class ControlDeveloper {
 	 *            Überabeparameter an main
 	 */
 	public static void main(String[] s) {
-		ControlDeveloper cd1 = new ControlDeveloper();
-
-		System.out.println("Aufgabe 1:");
-		System.out.println(cd1.getName());
-		System.out.println(name);
-
-		System.out.println("Aufgabe 3:");
-		testCommands(commands);
-		printCommands(commands);
-
-		System.out.println("Aufgabe 4:");
-		commandList.add(commands[0]);
-		commandList.add(commands[1]);
-		commandList.add(commands[2]);
-		//commandList.add(commands[3]);
-
-		 commandList.remove(1);
-		// commandList.moveUp(3);
-		//commandList.moveDown(3);
-
-		for (int i = 0; commandList.get(i) != null; i++) {
-			System.out.println(commandList.get(i).toString());
-		}
+		//Test
+		//ControlModel cm=new ControlModel();
+		Vector v=new Vector();
+		String test =new String ("Hallo");
+		v.add(test);
+		File f=new File("zeug");
+		
+		//cm1.TextFile(f, true);
+		
+		
 
 	}
 

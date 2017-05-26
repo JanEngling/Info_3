@@ -1,0 +1,91 @@
+package Aufgaben;
+
+/**
+ * Controler der beiden Listen, implementiert IOType
+ * 
+ * @author Andreas Sautter u. Jan Engling
+ * @version 1.0
+ * @since JDK 1.8
+ */
+import java.io.File;
+import java.util.Vector;
+
+import hsrt.mec.controldeveloper.io.IOType;
+
+//soll objecte von create instance in verkettete Liste einfügen, remove...
+public class ControlModel {
+	private static ControlModel instance;
+	private static CommandType[] commandTypes = new CommandType[4];
+	private static CommandList controlProcess;
+
+	// File file =new File("C:\Users\Jan\Desktop\Hochschule\SS17_17\Informatik
+	// 3");
+	
+	/**
+	 * experiment
+	 * @param f
+	 * @param b
+	 */
+	public void TextFile(File f, boolean b){
+		
+	}
+	/**
+	 * Standartkonstruktor von ControlModel
+	 */
+	public ControlModel() {
+	}
+
+	/**
+	 * Holt Instance ???
+	 * 
+	 * @return Gibt ControlModel zurück
+	 */
+	public ControlModel getInstance() {
+		return null;
+	}
+
+	/**
+	 * Befüllt erste Liste mit allen CommandType Objekten (4)
+	 */
+	public void createCommandTypes() {
+
+	}
+
+	/**
+	 * Läd Strings aus einer vorher erzeugten Datei
+	 * 
+	 * @return true wenn erfolgreich, false wenn erfolglos
+	 */
+	public boolean load(/* File */) {
+		return true;
+	}
+
+	/**
+	 * Speichert Liste als Strings in Datei
+	 * 
+	 * @return true wenn erfolgreich, false wenn erfolglos
+	 */
+	public boolean save() {
+		return true;
+	}
+
+	/**
+	 * ???
+	 * 
+	 * @param c
+	 *            Bekommt Command übergeben
+	 */
+	public void commandPerformed(Command c) {
+
+	}
+
+	/**
+	 * ??
+	 * 
+	 * @return
+	 */
+	public CommandList getControlProcess() {
+		return null;
+	}
+	
+}

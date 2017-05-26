@@ -7,7 +7,7 @@ package Aufgaben;
  * @version 1.0
  * @since JDK 1.8
  */
-public class CommandType {
+public class CommandType {	//erstell aus geholtem namen eine instance des objects er classe command
 	private String name;
 
 	/**

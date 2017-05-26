@@ -12,30 +12,49 @@ import java.util.Vector;
 
 import hsrt.mec.controldeveloper.io.IOType;
 
+//soll objecte von create instance in verkettete Liste einfügen, remove...
 public class ControlModel implements IOType {
-	private static ControlModel instance;
-	private static CommandType[] commandTypes = new CommandType[4];
-	private static CommandList controlProcess;
+	private  static ControlModel instance = new ControlModel();
+	private  static CommandType[] commandTypes = new CommandType[4];
+	private  static CommandList controlProcess;
 
 	// File file =new File("C:\Users\Jan\Desktop\Hochschule\SS17_17\Informatik
 	// 3");
+	
+	/**
+	 * experiment
+	 * @param f
+	 * @param b
+	 */
+	/*
+	public void TextFile(File f, boolean b){
+		
+	}
+	*/
 	/**
 	 * Standartkonstruktor von ControlModel
 	 */
 	private ControlModel() {
 	}
-
 	/**
-	 * Holt Instance ???
+	 * braucht man um zu definieren was der input is 
+	 * @param f
+	 * @param b
+	 */
+	public void TextFile (File f, boolean b){
+		
+	}
+	/**
+	 * gibt instance zurück ???
 	 * 
 	 * @return Gibt ControlModel zurück
 	 */
 	public ControlModel getInstance() {
-		return null;
+		return instance;
 	}
 
 	/**
-	 * Befüllt erste Liste mit allen CommandType Objekten
+	 * Befüllt erste Liste mit allen CommandType Objekten (4)
 	 */
 	public void createCommandTypes() {
 
@@ -77,25 +96,23 @@ public class ControlModel implements IOType {
 	public CommandList getControlProcess() {
 		return null;
 	}
-
-	/**
-	 * ???
-	 */
+	@Override
 	public boolean close() {
 		return false;
 	}
-
 	/**
-	 * Liest aus einer Datei ???
+	 * Daten in der Datei werden in den Vector geschrieben
 	 */
 	public boolean read(Vector<String> arg0) {
 		return false;
 	}
-
 	/**
-	 * Schreibt in eine Datei???
+	 * Alle Daten in vector (Strings werden in die datei geschriben)
 	 */
 	public boolean write(Vector<String> arg0) {
 		return false;
 	}
+
+	
+	
 }
