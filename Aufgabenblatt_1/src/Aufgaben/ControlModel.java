@@ -27,15 +27,16 @@ public class ControlModel implements IOType {
 	 * @param b
 	 */
 	/*
-	public void TextFile(File f, boolean b){
-		
+	public void TextFile(File f, boolean b){	
 	}
 	*/
+	
 	/**
 	 * Standartkonstruktor von ControlModel
 	 */
 	private ControlModel() {
 	}
+	
 	/**
 	 * braucht man um zu definieren was der input is 
 	 * @param f
@@ -45,9 +46,8 @@ public class ControlModel implements IOType {
 		
 	}
 	/**
-	 * gibt instance zurück ???
-	 * 
-	 * @return Gibt ControlModel zurück
+	 * Getter-Methode
+	 * @return Gibt die Referenz des Obejekts ControlModel zurück.
 	 */
 	public ControlModel getInstance() {
 		return instance;

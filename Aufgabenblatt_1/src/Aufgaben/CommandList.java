@@ -24,14 +24,12 @@ public class CommandList {
 		Element pos = new Element(c);
 
 		if (root == null) {
-			root = pos; // Wurzel auf erstes Element setzten
+			root = pos; 					// Wurzel auf erstes Element setzten
 			return true;
 		} else {
-			pos.setNext(root); // Aktuelle Wurzel dem neuen Element als Next
-								// zuweisen
-			root.setPrev(pos); // Dem "alten ersten" Element das vorhergehende
-								// Element zuweisen
-			root = pos; // neuer Listenanfang der Variable root zuweisen
+			pos.setNext(root); 				// Aktuelle Wurzel dem neuen Element als Next zuweisen
+			root.setPrev(pos); 				// Dem "alten ersten" Element das vorhergehende Element zuweisen
+			root = pos; 					// neuer Listenanfang der Variable root zuweisen
 			return true;
 		}
 	}
@@ -45,14 +43,14 @@ public class CommandList {
 	 */
 	private int groeße(Element root) {
 		int counter = 0;
-		Element aktPos = root; // Hilfsvariable
+		Element aktPos = root; 				// Hilfsvariable
 
-		if (root == null) { // Wenn Liste leer
+		if (root == null) { 				// Wenn Liste leer
 			return counter;
 		} else {
-			do { // Größe der Liste bestimmen
-				counter++; // Zähler
-				aktPos = aktPos.getNext(); // Liste durchitterieren
+			do { 							// Größe der Liste bestimmen
+				counter++; 					// Zähler
+				aktPos = aktPos.getNext(); 	// Liste durchitterieren
 			} while (aktPos != null);
 			return counter;
 		}
@@ -63,29 +61,19 @@ public class CommandList {
 	 * gelöscht werden.
 	 * 
 	 * @param pos
-	 *            Position der verketteten Liste
+	 *     		 Position der verketteten Liste
 	 * @return True, wenn das Element erfolgreich gelöscht wurde, false wenn
 	 *         (pos außerhalb Listengröße ???)
 	 */
 	public boolean remove(int pos) {
 		Element aktPos = root;
 
-		for (int i = groeße(root); i != 0; i--) { // i wird auf Counter gesetzt
-													// und es wird
-													// runtergezählt(so arbeitet
-													// auch die Liste)
+		for (int i = groeße(root); i != 0; i--) { 				// i wird auf Counter gesetzt und es wird runtergezählt(so arbeitet auch die Liste)
 			if (i == pos + 1) {
-				Element vorAktPos = aktPos.getPrev(); // Adresse vom vorherigen
-														// und folgenden Element
-														// zugreifen
+				Element vorAktPos = aktPos.getPrev(); 			// Adresse vom vorherigen und folgenden Element zugreifen
 				Element nachAktPos = aktPos.getNext();
 
-				if (vorAktPos == null && nachAktPos != null) { // Fallunterscheidung
-																// 1.Fall:
-																// Anfang;
-																// 2.Fall:
-																// Mitte;
-																// 3.Fall: Ende;
+				if (vorAktPos == null && nachAktPos != null) {  // Fallunterscheidung 1.Fall: Anfang; 2.Fall: Mitte 3.Fall: Ende;
 					root = nachAktPos;
 					root.setPrev(null);
 					return true;
@@ -115,16 +103,13 @@ public class CommandList {
 	public Command get(int pos) {
 		Element aktPos = root;
 
-		for (int i = groeße(root); i != 0; i--) { // i wird auf Counter gesetzt
-													// und es wird
-													// runtergezählt(so arbeitet
-													// auch die Liste)
+		for (int i = groeße(root); i != 0; i--) { 	// i wird auf Counter gesetzt und es wird runtergezählt(so arbeitet auch die Liste)
 			if (i == pos + 1) {
 				return aktPos.getElement();
 			}
 			aktPos = aktPos.getNext();
 		}
-		return null; // Wenn es die Postion nicht gibt wird null zurück gegeben
+		return null; 								// Wenn es die Postion nicht gibt wird null zurück gegeben
 	}
 
 	/**
@@ -139,17 +124,12 @@ public class CommandList {
 	public boolean moveUp(int pos) {
 		Element aktPos = root;
 
-		for (int i = groeße(root); i != 0; i--) { // i wird auf Counter gesetzt
-													// und es wird
-													// runtergezählt(so arbeitet
-													// auch die Liste)
+		for (int i = groeße(root); i != 0; i--) { 				// i wird auf Counter gesetzt und es wird runtergezählt(so arbeitet auch die Liste)
 			if (i == pos + 1) {
-				Element nachAktPos = aktPos.getNext(); // Adresse vom folgenden
-														// Element zugreifen
+				Element nachAktPos = aktPos.getNext(); 			// Adresse vom folgenden Element zugreifen
 
 				if (aktPos.getNext() != null) {
-					Command temp = nachAktPos.getElement(); // Elemente
-															// vertauschen
+					Command temp = nachAktPos.getElement(); 	// Elemente vertauschen
 					nachAktPos.setElement(aktPos.getElement());
 					aktPos.setElement(temp);
 					return true;
@@ -174,17 +154,12 @@ public class CommandList {
 	public boolean moveDown(int pos) {
 		Element aktPos = root;
 
-		for (int i = groeße(root); i != 0; i--) { // i wird auf Counter gesetzt
-													// und es wird
-													// runtergezählt(so arbeitet
-													// auch die Liste)
+		for (int i = groeße(root); i != 0; i--) {	 			// i wird auf Counter gesetzt und es wird runtergezählt(so arbeitet auch die Liste)
 			if (i == pos + 1) {
-				Element vorAktPos = aktPos.getPrev(); // Adresse vom folgenden
-														// Element zugreifen
+				Element vorAktPos = aktPos.getPrev(); 			// Adresse vom folgenden Element zugreifen
 
 				if (aktPos.getPrev() != null) {
-					Command temp = vorAktPos.getElement(); // Elemente
-															// vertauschen
+					Command temp = vorAktPos.getElement(); 		// Elemente vertauschen
 					vorAktPos.setElement(aktPos.getElement());
 					aktPos.setElement(temp);
 					return true;
