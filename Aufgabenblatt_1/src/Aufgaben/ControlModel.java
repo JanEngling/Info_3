@@ -43,8 +43,8 @@ public class ControlModel implements IOType {
 	 * @param b
 	 */
 	public void TextFile (File f, boolean b){
-		
 	}
+	
 	/**
 	 * Getter-Methode
 	 * @return Gibt die Referenz des Obejekts ControlModel zurück.
@@ -62,9 +62,34 @@ public class ControlModel implements IOType {
 		commandTypes[2] = new CommandType("Repetition");
 		commandTypes[3] = new CommandType("Pause");
 	}
+	
+	
+	// Methoden um die Liste zu verwalten weiß aber noch nicht wie das ganze mit den Button zusammenhängt!
+	public void addCommand(){
+		controlProcess.add(createInstance());
+	}
+	
+	public void removeCommand(int pos){
+		controlProcess.remove(pos);
+	}
+	
+	public void moveUpCommand(int pos){
+		controlProcess.moveUp(pos);
+	}
+	
+	public void moveDownCommand(int pos){
+		controlProcess.moveDown(pos);
+	}
+	
+	
+
+	private Command createInstance() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	/**
-	 * Läd Strings aus einer vorher erzeugten Datei
+	 * Lädt Strings aus einer vorher erzeugten Datei
 	 * 
 	 * @return true wenn erfolgreich, false wenn erfolglos
 	 */
@@ -87,28 +112,31 @@ public class ControlModel implements IOType {
 	 * @param c
 	 *            Bekommt Command übergeben
 	 */
+	
 	public void commandPerformed(Command c) {
-
 	}
 
 	/**
-	 * ??
+	 * Methode um dem prozess zu starten bzw. stoppen?
 	 * 
 	 * @return
 	 */
 	public CommandList getControlProcess() {
 		return null;
 	}
+	
 	@Override
 	public boolean close() {
 		return false;
 	}
+	
 	/**
 	 * Daten in der Datei werden in den Vector geschrieben
 	 */
 	public boolean read(Vector<String> arg0) {
 		return false;
 	}
+	
 	/**
 	 * Alle Daten in vector (Strings werden in die datei geschriben)
 	 */

@@ -22,7 +22,7 @@ public abstract class Command implements ICommand {
 	 * @param s
 	 *            Übernimmt eingegebenen String
 	 */
-	public void setName(String s) {
-		this.name = s;
+	public void setName(String name) {
+		this.name = name;
 	}
 }

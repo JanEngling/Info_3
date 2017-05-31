@@ -17,7 +17,7 @@ public class CommandList {
 	 * Mit der Methode add kann ein neues Listen Element hinzugefügt werden.
 	 * 
 	 * @param c
-	 *            Objekt von Typ Command
+	 *         Objekt von Typ Command
 	 * @return True wenn das Element erfolgreich hinzugefügt wurde.
 	 */
 	public boolean add(Command c) {
