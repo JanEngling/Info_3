@@ -57,7 +57,10 @@ public class ControlModel implements IOType {
 	 * Befüllt erste Liste mit allen CommandType Objekten (4)
 	 */
 	public void createCommandTypes() {
-
+		commandTypes[0] = new CommandType("Direction");
+		commandTypes[1] = new CommandType("Gear");
+		commandTypes[2] = new CommandType("Repetition");
+		commandTypes[3] = new CommandType("Pause");
 	}
 
 	/**

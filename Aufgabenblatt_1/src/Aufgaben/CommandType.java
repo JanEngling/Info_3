@@ -19,7 +19,7 @@ public class CommandType {	//erstell aus geholtem namen eine instance des object
 
 	/**
 	 * @param name
-	 *            Übernimmt den übergebenen String als Name
+	 * Übernimmt den übergebenen String als Name
 	 */
 	public void setName(String name) {
 		this.name = name;
