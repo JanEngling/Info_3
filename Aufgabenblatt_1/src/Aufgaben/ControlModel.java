@@ -9,18 +9,20 @@ package Aufgaben;
  */
 import java.io.File;
 import java.util.Vector;
-
 import hsrt.mec.controldeveloper.io.IOType;
+import hsrt.mec.controldeveloper.io.TextFile;
+
 
 //soll objecte von create instance in verkettete Liste einfügen, remove...
-public class ControlModel implements IOType {
+public class ControlModel {
 	private  static ControlModel instance = new ControlModel();
 	private  static CommandType[] commandTypes = new CommandType[4];
 	private  static CommandList controlProcess;
 
 	// File file =new File("C:\Users\Jan\Desktop\Hochschule\SS17_17\Informatik
 	// 3");
-	
+	//Vextor<String> v =new Vector<String>();
+	//TextFile tf = new hsrt.mec.controldeveloper.io.TextFile(false);
 	/**
 	 * experiment
 	 * @param f
@@ -41,22 +43,21 @@ public class ControlModel implements IOType {
 	 * @param f
 	 * @param b
 	 */
-	public void TextFile (File f, boolean b){
-		
-	}
+	
 	/**
 	 * gibt instance zurück ???
 	 * 
 	 * @return Gibt ControlModel zurück
 	 */
 	public ControlModel getInstance() {
+		
 		return instance;
 	}
 
 	/**
 	 * Befüllt erste Liste mit allen CommandType Objekten (4)
 	 */
-	public void createCommandTypes() {
+	public void createCommandTypes() {	//Andreas
 
 	}
 
@@ -65,7 +66,30 @@ public class ControlModel implements IOType {
 	 * 
 	 * @return true wenn erfolgreich, false wenn erfolglos
 	 */
-	public boolean load(/* File */) {
+	public boolean load(File myFile) {
+		Vector<String> v = new Vector<String>();
+		TextFile loadFile = new TextFile(myFile, false);
+		loadFile.read(v);
+		//beabreitung vector v[0] = erste zeile
+		for (int i =0; v.get(i) != null; i++){
+			String[] parts = v.get(i).split(":");
+			switch (parts[0]){
+				case "Direction":	controlProcess.add(new Direction(Integer.valueOf(parts[1])));
+									break;
+				case "Gear":		controlProcess.add(new Gear(Integer.valueOf(parts[1]), Double.valueOf(parts[2])));
+									break;
+				case "Pause":		controlProcess.add(new Pause(Double.valueOf(parts[1])));
+									break;
+				case "Repetition":	controlProcess.add(new Repetition(Integer.valueOf(parts[1]), Integer.valueOf(parts[2])));
+									break;
+				default:			System.out.println("Fehler");
+									return false;
+			}
+		}
+		//String[] parts = v.get(0).split(":");
+		//Double a = Double.valueOf(parts[0]);
+		//v.get(i).split(9
+		loadFile.close();
 		return true;
 	}
 
@@ -74,7 +98,12 @@ public class ControlModel implements IOType {
 	 * 
 	 * @return true wenn erfolgreich, false wenn erfolglos
 	 */
-	public boolean save() {
+	public boolean save(File myFile) {
+		TextFile saveFile = new TextFile(myFile, false);
+		Vector<String> v = new Vector<String>();
+		v= controlProcess.readList();
+		saveFile.write(v);
+		saveFile.close();
 		return true;
 	}
 
@@ -96,22 +125,7 @@ public class ControlModel implements IOType {
 	public CommandList getControlProcess() {
 		return null;
 	}
-	@Override
-	public boolean close() {
-		return false;
-	}
-	/**
-	 * Daten in der Datei werden in den Vector geschrieben
-	 */
-	public boolean read(Vector<String> arg0) {
-		return false;
-	}
-	/**
-	 * Alle Daten in vector (Strings werden in die datei geschriben)
-	 */
-	public boolean write(Vector<String> arg0) {
-		return false;
-	}
+	
 
 	
 	

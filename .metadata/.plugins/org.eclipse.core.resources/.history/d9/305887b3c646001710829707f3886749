@@ -1,0 +1,80 @@
+package Aufgaben;
+
+import hsrt.mec.controldeveloper.core.com.command.IRepetition;
+
+/**
+ * Implementiert Interface und Funktionalitäten zur Verwaltung der
+ * Wiederholungen von Befehlen
+ * 
+ * @author Andreas & Jan
+ * @version 1.0
+ */
+public class Repetition extends Command implements IRepetition {
+	private int nrSteps;
+	private int nrRepetitions;
+
+	/**
+	 * Konstruktor, übergebene Anzahl der zu wiederholenden Schritte und die
+	 * Anzahl der Wiederholungen werden übernommen
+	 * 
+	 * @param nrSteps
+	 *            Anzahl der zu wiederholenden Schritte
+	 * @param nrRepetitions
+	 *            Anzahl der Wiederholungen
+	 */
+	public Repetition(int nrSteps, int nrRepetitions) {
+		this.setName("Repetition");
+		this.nrSteps = nrSteps;
+		this.nrRepetitions = nrRepetitions;
+	}
+
+	/**
+	 * Standartkonstruktor, Wiederholungen und zu wiederholende Schritte wird 1
+	 * gesetzt
+	 */
+	public Repetition() {
+		this.setName("Repetition");
+		this.nrSteps = 1;
+		this.nrRepetitions = 1;
+	}
+
+	/**
+	 * @return Gibt Anzahl der Wiederholungen zurück
+	 */
+	public int getNrRepetitions() {
+		return nrRepetitions;
+	}
+
+	/**
+	 * @return Gibt zu wiederholende Schritte zurück
+	 */
+	public int getNrSteps() {
+		return nrSteps;
+	}
+
+	/**
+	 * @param nrSteps
+	 *            Übergebene Anzahl der zu wiederholenden Schritte wird
+	 *            übernommen
+	 */
+	public void setNrSteps(int nrSteps) {
+		this.nrSteps = nrSteps;
+	}
+
+	/**
+	 * @param nrRepetitions
+	 *            Anzahl der Wiederholungen wird übernommen
+	 */
+	public void setNrRepetitions(int nrRepetitions) {
+		this.nrRepetitions = nrRepetitions;
+	}
+
+	/**
+	 * Gibt Anzahl der zu wiederholenden Schritte und Wiederholungen als String
+	 * zurück
+	 */
+	public String toString() {
+		return "Repetition [nrSteps=" + nrSteps + ", nrRepetitions=" + nrRepetitions + "]";
+	}
+
+}
