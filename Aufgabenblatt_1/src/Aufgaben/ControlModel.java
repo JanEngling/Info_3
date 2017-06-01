@@ -17,7 +17,7 @@ import hsrt.mec.controldeveloper.io.TextFile;
 public class ControlModel {
 	private  static ControlModel instance = new ControlModel();
 	private  static CommandType[] commandTypes = new CommandType[4];
-	private  static CommandList controlProcess;
+	private  static CommandList controlProcess = new CommandList();
 
 	// File file =new File("C:\Users\Jan\Desktop\Hochschule\SS17_17\Informatik
 	// 3");
@@ -49,8 +49,7 @@ public class ControlModel {
 	 * Getter-Methode
 	 * @return Gibt die Referenz des Obejekts ControlModel zurück.
 	 */
-	public ControlModel getInstance() {
-		
+	public ControlModel getInstance() {	
 		return instance;
 	}
 
@@ -65,7 +64,7 @@ public class ControlModel {
 		commandTypes[3] = new CommandType("Pause");
 	}
 	
-	
+	/*
 	// Methoden um die Liste zu verwalten weiß aber noch nicht wie das ganze mit den Button zusammenhängt!
 	public void addCommand(){
 		controlProcess.add(createInstance());
@@ -88,10 +87,10 @@ public class ControlModel {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	*/
 
 	/**
 	 * Lädt Strings aus einer vorher erzeugten Datei
-	 * 
 	 * @return true wenn erfolgreich, false wenn erfolglos
 	 */
 	public boolean load(File myFile) {
@@ -136,22 +135,18 @@ public class ControlModel {
 	}
 
 	/**
-	 * ???
 	 * 
-	 * @param c
-	 *            Bekommt Command übergeben
+	 * @param c Bekommt ein Objekt vom Typ Command übergeben
 	 */
-	
 	public void commandPerformed(Command c) {
 	}
 
 	/**
-	 * Methode um dem prozess zu starten bzw. stoppen?
-	 * 
-	 * @return
+	 * Getter-Methode
+	 * @return Gibt die Reference der verketteteten Liste von Typ CommandList zurück 
 	 */
 	public CommandList getControlProcess() {
-		return null;
+		return controlProcess;
 	}
 	
 
