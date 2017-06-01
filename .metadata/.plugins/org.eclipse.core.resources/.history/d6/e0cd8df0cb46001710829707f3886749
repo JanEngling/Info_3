@@ -44,7 +44,12 @@ public class ControlModel {
 	 * @param f
 	 * @param b
 	 */
-
+<<<<<<< HEAD
+=======
+	public void TextFile (File f, boolean b){
+	}
+>>>>>>> e5c0c701e99e242f59c94273cf7735afe3bfa370
+	
 	/**
 	 * Getter-Methode
 	 * @return Gibt die Referenz des Obejekts ControlModel zurück.
@@ -57,7 +62,9 @@ public class ControlModel {
 	/**
 	 * Befüllt erste Liste bzw. Array mit allen möglichen CommandType Objekten (4)
 	 */
-
+<<<<<<< HEAD
+	public void createCommandTypes() {	//Andreas
+=======
 	public void createCommandTypes() {
 		commandTypes[0] = new CommandType("Direction");
 		commandTypes[1] = new CommandType("Gear");
@@ -83,6 +90,8 @@ public class ControlModel {
 		controlProcess.moveDown(pos);
 	}
 	
+	
+>>>>>>> e5c0c701e99e242f59c94273cf7735afe3bfa370
 
 	private Command createInstance() {
 		// TODO Auto-generated method stub
@@ -154,6 +163,27 @@ public class ControlModel {
 		return null;
 	}
 	
+<<<<<<< HEAD
+=======
+	@Override
+	public boolean close() {
+		return false;
+	}
+	
+	/**
+	 * Daten in der Datei werden in den Vector geschrieben
+	 */
+	public boolean read(Vector<String> arg0) {
+		return false;
+	}
+	
+	/**
+	 * Alle Daten in vector (Strings werden in die datei geschriben)
+	 */
+	public boolean write(Vector<String> arg0) {
+		return false;
+	}
+>>>>>>> e5c0c701e99e242f59c94273cf7735afe3bfa370
 
 	
 	
