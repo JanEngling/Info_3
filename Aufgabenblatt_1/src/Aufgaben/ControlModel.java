@@ -109,7 +109,7 @@ public class ControlModel {
 									break;
 				case "Repetition":	controlProcess.add(new Repetition(Integer.valueOf(parts[1]), Integer.valueOf(parts[2])));
 									break;
-				default:			System.out.println("Fehler");
+				default:			System.out.println("Fehler!");
 									return false;
 			}
 		}
@@ -123,7 +123,7 @@ public class ControlModel {
 	/**
 	 * Speichert Liste als Strings in Datei
 	 * 
-	 * @return true wenn erfolgreich, false wenn erfolglos
+	 * @return true wenn erfolgreich, false wenn erfolglos.
 	 */
 	public boolean save(File myFile) {
 		TextFile saveFile = new TextFile(myFile, false);
