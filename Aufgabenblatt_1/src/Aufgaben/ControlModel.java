@@ -60,13 +60,14 @@ public class ControlModel {
 		TextFile loadFile = new TextFile(myFile, false);
 		if (myFile.length() == 0) {
 			System.out.println("leer");
+			loadFile.close();
 			return false;
 		} else {
 			loadFile.read(v);
 			for (int i = 0; v.get(i) != "Ende"; i++) {
 				String[] parts = v.get(i).split(":");
 				switch (parts[0]) {
-				case "Direction":
+				case "Direction":	///0 zeilenende !!!!
 					controlProcess.add(new Direction(Integer.valueOf(parts[1])));
 					break;
 				case "Gear":
@@ -83,6 +84,7 @@ public class ControlModel {
 					return true;
 				default:
 					System.out.println("Fehler");
+					loadFile.close();
 					return false;
 				}
 			}

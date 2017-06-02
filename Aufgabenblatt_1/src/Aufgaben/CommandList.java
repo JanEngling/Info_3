@@ -172,6 +172,9 @@ public class CommandList {
 		}
 		return false;
 	}
+	
+	
+	//Clear list
 	/**
 	 * 
 	 * @return Gibt Vektor mit werten zurück
