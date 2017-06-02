@@ -15,9 +15,10 @@ import hsrt.mec.controldeveloper.io.TextFile;
 
 //soll objecte von create instance in verkettete Liste einfügen, remove...
 public class ControlModel {
-<<<<<<< HEAD
-	private static ControlModel instance;
+
+	private static ControlModel instance = new ControlModel();
 	private static CommandType[] commandTypes = new CommandType[4];
+<<<<<<< HEAD
 	private CommandList controlProcess = new CommandList();
 
 
@@ -29,6 +30,10 @@ public class ControlModel {
 
 	private static ControlModel instance = new ControlModel();
 	private static CommandType[] commandTypes = new CommandType[4];
+	private static CommandList controlProcess = new CommandList();
+
+>>>>>>> 734d978e72769163aa9ccc1cbe38a8a4a133c1c1
+=======
 	private static CommandList controlProcess = new CommandList();
 
 >>>>>>> 734d978e72769163aa9ccc1cbe38a8a4a133c1c1
