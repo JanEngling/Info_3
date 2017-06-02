@@ -185,7 +185,7 @@ public class CommandList {
 		if(groeﬂe(root)==0){
 			return null;
 		}else if (groeﬂe(root)==1){
-			s.add(aktPos.getElement().toString());
+			s.addElement(aktPos.getElement().toString());
 			return s;
 		}
 		for (int j=0; aktPos.getPrev()!=null; j++){
