@@ -21,7 +21,7 @@ public class ControlModel {
 	private CommandType[] commandTypes = new CommandType[4];
 	private CommandList controlProcess = new CommandList();
 
-
+	private static ControlModel instance = new ControlModel();
 
 
 
@@ -32,9 +32,16 @@ public class ControlModel {
 	// TextFile tf = new hsrt.mec.controldeveloper.io.TextFile(false);
 
 
+	private static ControlModel instance = new ControlModel();
+	private static CommandType[] commandTypes = new CommandType[4];
+	private static CommandList controlProcess = new CommandList();
 
+>>>>>>> 734d978e72769163aa9ccc1cbe38a8a4a133c1c1
+=======
+	private static CommandList controlProcess = new CommandList();
+>>>>>>> c400b395905ec2b94c45ccf0056fe27e237177da
 
-
+>>>>>>> 734d978e72769163aa9ccc1cbe38a8a4a133c1c1
 	/**
 	 * experiment
 	 * 
@@ -66,6 +73,7 @@ public class ControlModel {
 	 */
 
 	public static ControlModel getInstance() {
+		if ()
 		return instance;
 	}
 
@@ -87,6 +95,21 @@ public class ControlModel {
 	public void addCommand() {
 	}
 
+	/*
+	 * // Methoden um die Liste zu verwalten weiß aber noch nicht wie das ganze
+	 * mit den Button zusammenhängt! public void addCommand(){ >>>>>>>
+	 * 19f43c29577579583e1b5a37527ead90eb38c34f
+	 * controlProcess.add(createInstance()); }
+	 * 
+	 * public void removeCommand(int pos) { controlProcess.remove(pos); }
+	 * 
+	 * public void moveUpCommand(int pos) { controlProcess.moveUp(pos); }
+	 * 
+	 * public void moveDownCommand(int pos) { controlProcess.moveDown(pos); }
+	 * 
+	 * private Command createInstance() { // TODO Auto-generated method stub
+	 * return null; }
+	 */
 
 	/**
 	 * Lädt Strings aus einer vorher erzeugten Datei

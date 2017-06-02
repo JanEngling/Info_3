@@ -66,6 +66,7 @@ public class ControlModel {
 	 */
 
 	public static ControlModel getInstance() {
+		if ()
 		return instance;
 	}
 
@@ -87,6 +88,21 @@ public class ControlModel {
 	public void addCommand() {
 	}
 
+	/*
+	 * // Methoden um die Liste zu verwalten weiß aber noch nicht wie das ganze
+	 * mit den Button zusammenhängt! public void addCommand(){ >>>>>>>
+	 * 19f43c29577579583e1b5a37527ead90eb38c34f
+	 * controlProcess.add(createInstance()); }
+	 * 
+	 * public void removeCommand(int pos) { controlProcess.remove(pos); }
+	 * 
+	 * public void moveUpCommand(int pos) { controlProcess.moveUp(pos); }
+	 * 
+	 * public void moveDownCommand(int pos) { controlProcess.moveDown(pos); }
+	 * 
+	 * private Command createInstance() { // TODO Auto-generated method stub
+	 * return null; }
+	 */
 
 	/**
 	 * Lädt Strings aus einer vorher erzeugten Datei
