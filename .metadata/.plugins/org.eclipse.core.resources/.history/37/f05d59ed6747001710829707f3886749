@@ -51,9 +51,9 @@ public class ControlDeveloper {
 		//IOType textFile =new TextFile(cd1.myfile ,false);
 		//cm.save(textFile);
 		ControlDeveloper cd = new ControlDeveloper();
-		File myFile = new File(System.getProperty("user.dir")+"\\meine_datei.txt");
-		//ControlModel c= new ControlModel();
-		ControlModel c = ControlModel.getInstance();
+		File myFile =new File(System.getProperty("user.dir")+"\\meine_datei.txt");
+		ControlModel c= new ControlModel();
+		
 		c.load(myFile);
 		c.getControlProcess().add(new Direction(4));
 		c.getControlProcess().add(new Pause(4));

@@ -16,9 +16,9 @@ import hsrt.mec.controldeveloper.io.TextFile;
 //soll objecte von create instance in verkettete Liste einfügen, remove...
 public class ControlModel {
 
-	private static ControlModel instance = null;
-	private CommandType[] commandTypes = new CommandType[4];
-	private CommandList controlProcess = new CommandList();
+	private static ControlModel instance = new ControlModel();
+	private static CommandType[] commandTypes = new CommandType[4];
+	private static CommandList controlProcess = new CommandList();
 
 	/**
 	 * experiment
@@ -34,7 +34,7 @@ public class ControlModel {
 	 * Standartkonstruktor von ControlModel
 	 */
 	// Hiernoch fehler
-	private ControlModel() {
+	public ControlModel() {
 	}
 
 	/**
@@ -50,8 +50,7 @@ public class ControlModel {
 	 * @return Gibt die Referenz des Obejekts ControlModel zurück.
 	 */
 
-	public static ControlModel getInstance() {
-		if ()
+	public ControlModel getInstance() {
 		return instance;
 	}
 
@@ -102,6 +101,7 @@ public class ControlModel {
 			return false;
 		}
 		loadFile.read(v);
+
 		for (int i = 0; v.get(i) != "Ende"; i++) {
 			String[] parts = v.get(i).split(":");
 			switch (parts[0]) {

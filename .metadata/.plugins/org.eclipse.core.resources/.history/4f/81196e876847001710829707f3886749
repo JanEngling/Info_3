@@ -16,7 +16,7 @@ import hsrt.mec.controldeveloper.io.TextFile;
 //soll objecte von create instance in verkettete Liste einfügen, remove...
 public class ControlModel {
 
-	private static ControlModel instance = null;
+	private static ControlModel instance;
 	private CommandType[] commandTypes = new CommandType[4];
 	private CommandList controlProcess = new CommandList();
 
@@ -50,9 +50,8 @@ public class ControlModel {
 	 * @return Gibt die Referenz des Obejekts ControlModel zurück.
 	 */
 
-	public static ControlModel getInstance() {
-		if ()
-		return instance;
+	private static ControlModel getInstance() {
+		return instance = new ControlModel();
 	}
 
 	/**
