@@ -13,6 +13,10 @@ import hsrt.mec.controldeveloper.io.TextFile;
  */
 public class ControlDeveloper {
 	private static String name = "Control Developer";
+	private static CommandList commandList = new CommandList();
+	private static Command[] commands = new Command[10];
+	private static ControlDeveloper cd1 = new ControlDeveloper();
+	private static ControlModel cm;
 	private static File myFile =new File(System.getProperty("user.dir")+"\\meine_datei.txt");
 	
 	/**

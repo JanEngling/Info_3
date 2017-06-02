@@ -1,3 +1,2 @@
 Direction:4
-Pause:4.0
 Ende

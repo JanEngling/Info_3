@@ -99,10 +99,10 @@ public class ControlModel {
 	public boolean save(File myFile) {
 		TextFile saveFile = new TextFile(myFile, false);
 		Vector<String> v = new Vector<String>();
+		System.out.println("Saved");
 		v = controlProcess.readList();
 		v.add("Ende");
 		saveFile.write(v);
-		System.out.println("Saved");
 		saveFile.close();
 		return true;
 	}

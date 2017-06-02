@@ -40,7 +40,7 @@ public class ControlDeveloper {
 		ControlModel c = ControlModel.getInstance();
 		c.load(myFile);
 		c.getControlProcess().add(new Direction(4));
-		c.getControlProcess().add(new Pause(4));
+		//c.getControlProcess().add(new Pause(4));
 		for (int i = 0; c.getControlProcess().get(i) != null;i++){
 			System.out.println(c.getControlProcess().get(i).toString());
 		}
