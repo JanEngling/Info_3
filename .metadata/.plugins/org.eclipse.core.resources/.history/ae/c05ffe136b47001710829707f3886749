@@ -55,7 +55,11 @@ public class ControlModel {
 
 	}
 
-	
+	// Methoden um die Liste zu verwalten weiﬂ aber noch nicht wie das ganze mit
+	// den Button zusammenh‰ngt!
+	public void addCommand() {
+	}
+
 	/**
 	 * L‰dt Strings aus einer vorher erzeugten Datei
 	 * 
