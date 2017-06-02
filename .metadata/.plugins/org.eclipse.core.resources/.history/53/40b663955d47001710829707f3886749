@@ -15,23 +15,11 @@ import hsrt.mec.controldeveloper.io.TextFile;
 
 //soll objecte von create instance in verkettete Liste einfügen, remove...
 public class ControlModel {
-<<<<<<< HEAD
-	private static ControlModel instance;
-	private static CommandType[] commandTypes = new CommandType[4];
-	private CommandList controlProcess = new CommandList();
-
-
-	// File file =new File("C:\Users\Jan\Desktop\Hochschule\SS17_17\Informatik
-	// 3");
-	// Vextor<String> v =new Vector<String>();
-	// TextFile tf = new hsrt.mec.controldeveloper.io.TextFile(false);
-=======
 
 	private static ControlModel instance = new ControlModel();
 	private static CommandType[] commandTypes = new CommandType[4];
 	private static CommandList controlProcess = new CommandList();
 
->>>>>>> 734d978e72769163aa9ccc1cbe38a8a4a133c1c1
 	/**
 	 * experiment
 	 * 
@@ -108,10 +96,6 @@ public class ControlModel {
 	public boolean load(File myFile) {
 		Vector<String> v = new Vector<String>();
 		TextFile loadFile = new TextFile(myFile, false);
-		if (myFile.length()==0){
-			System.out.println("leer");
-			return false;
-		}
 		loadFile.read(v);
 
 		for (int i = 0; v.get(i) != "Ende"; i++) {

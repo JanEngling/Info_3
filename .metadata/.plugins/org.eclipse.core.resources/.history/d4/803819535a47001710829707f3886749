@@ -15,23 +15,11 @@ import hsrt.mec.controldeveloper.io.TextFile;
 
 //soll objecte von create instance in verkettete Liste einfügen, remove...
 public class ControlModel {
-<<<<<<< HEAD
-	private static ControlModel instance;
-	private static CommandType[] commandTypes = new CommandType[4];
-	private CommandList controlProcess = new CommandList();
 
+	private  static ControlModel instance = new ControlModel();
+	private  static CommandType[] commandTypes = new CommandType[4];
+	private  static CommandList controlProcess = new CommandList();
 
-	// File file =new File("C:\Users\Jan\Desktop\Hochschule\SS17_17\Informatik
-	// 3");
-	// Vextor<String> v =new Vector<String>();
-	// TextFile tf = new hsrt.mec.controldeveloper.io.TextFile(false);
-=======
-
-	private static ControlModel instance = new ControlModel();
-	private static CommandType[] commandTypes = new CommandType[4];
-	private static CommandList controlProcess = new CommandList();
-
->>>>>>> 734d978e72769163aa9ccc1cbe38a8a4a133c1c1
 	/**
 	 * experiment
 	 * 
@@ -62,8 +50,9 @@ public class ControlModel {
 	 * @return Gibt die Referenz des Obejekts ControlModel zurück.
 	 */
 
-	public ControlModel getInstance() {
+	public ControlModel getInstance() {	
 		return instance;
+
 	}
 
 	/**
@@ -76,42 +65,44 @@ public class ControlModel {
 		commandTypes[1] = new CommandType("Gear");
 		commandTypes[2] = new CommandType("Repetition");
 		commandTypes[3] = new CommandType("Pause");
-
+	
 	}
-
 	// Methoden um die Liste zu verwalten weiß aber noch nicht wie das ganze mit
 	// den Button zusammenhängt!
-	public void addCommand() {
+	public void addCommand() {}
+	
+	/*
+	// Methoden um die Liste zu verwalten weiß aber noch nicht wie das ganze mit den Button zusammenhängt!
+	public void addCommand(){
+>>>>>>> 19f43c29577579583e1b5a37527ead90eb38c34f
+		controlProcess.add(createInstance());
 	}
 
-	/*
-	 * // Methoden um die Liste zu verwalten weiß aber noch nicht wie das ganze
-	 * mit den Button zusammenhängt! public void addCommand(){ >>>>>>>
-	 * 19f43c29577579583e1b5a37527ead90eb38c34f
-	 * controlProcess.add(createInstance()); }
-	 * 
-	 * public void removeCommand(int pos) { controlProcess.remove(pos); }
-	 * 
-	 * public void moveUpCommand(int pos) { controlProcess.moveUp(pos); }
-	 * 
-	 * public void moveDownCommand(int pos) { controlProcess.moveDown(pos); }
-	 * 
-	 * private Command createInstance() { // TODO Auto-generated method stub
-	 * return null; }
-	 */
+	public void removeCommand(int pos) {
+		controlProcess.remove(pos);
+	}
+
+	public void moveUpCommand(int pos) {
+		controlProcess.moveUp(pos);
+	}
+
+	public void moveDownCommand(int pos) {
+		controlProcess.moveDown(pos);
+	}
+
+	private Command createInstance() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	*/
 
 	/**
 	 * Lädt Strings aus einer vorher erzeugten Datei
-	 * 
 	 * @return true wenn erfolgreich, false wenn erfolglos
 	 */
 	public boolean load(File myFile) {
 		Vector<String> v = new Vector<String>();
 		TextFile loadFile = new TextFile(myFile, false);
-		if (myFile.length()==0){
-			System.out.println("leer");
-			return false;
-		}
 		loadFile.read(v);
 
 		for (int i = 0; v.get(i) != "Ende"; i++) {
@@ -160,18 +151,18 @@ public class ControlModel {
 
 	/**
 	 * 
-	 * @param c
-	 *            Bekommt ein Objekt vom Typ Command übergeben
+	 * @param c Bekommt ein Objekt vom Typ Command übergeben
 	 */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 19f43c29577579583e1b5a37527ead90eb38c34f
 	public void commandPerformed(Command c) {
 	}
 
 	/**
 	 * Getter-Methode
-	 * 
-	 * @return Gibt die Reference der verketteteten Liste von Typ CommandList
-	 *         zurück
+	 * @return Gibt die Reference der verketteteten Liste von Typ CommandList zurück 
 	 */
 	public CommandList getControlProcess() {
 		return controlProcess;

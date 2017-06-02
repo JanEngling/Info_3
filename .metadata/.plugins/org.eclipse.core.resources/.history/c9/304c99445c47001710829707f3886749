@@ -54,6 +54,7 @@ public class ControlDeveloper {
 		File myFile =new File(System.getProperty("user.dir")+"\\meine_datei.txt");
 		ControlModel c= new ControlModel();
 		
+		
 		c.load(myFile);
 		c.getControlProcess().add(new Direction(4));
 		c.getControlProcess().add(new Pause(4));
