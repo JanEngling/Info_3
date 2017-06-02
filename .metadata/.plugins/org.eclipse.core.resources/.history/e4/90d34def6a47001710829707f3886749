@@ -20,18 +20,39 @@ public class ControlModel {
 	private CommandType[] commandTypes = new CommandType[4];
 	private CommandList controlProcess = new CommandList();
 
-	
+	// File file =new File("C:\Users\Jan\Desktop\Hochschule\SS17_17\Informatik
+	// 3");
+	// Vextor<String> v =new Vector<String>();
+	// TextFile tf = new hsrt.mec.controldeveloper.io.TextFile(false);
+
+	/**
+	 * experiment
+	 * 
+	 * @param f
+	 * @param b
+	 */
+	/*
+	 * public void TextFile(File f, boolean b){ }
+	 */
+
 	/**
 	 * Standartkonstruktor von ControlModel
 	 */
+	// Hiernoch fehler
 	private ControlModel() {
 	}
 
-	
 	/**
-	 * Gibt ControlModel zurück 
+	 * braucht man um zu definieren was der input is
 	 * 
-	 * @return Gibt genau eine Instanz von ControlModel zurück
+	 * @param f
+	 * @param b
+	 */
+
+	/**
+	 * Getter-Methode
+	 * 
+	 * @return Gibt die Referenz des Obejekts ControlModel zurück.
 	 */
 
 	public static ControlModel getInstance() {
