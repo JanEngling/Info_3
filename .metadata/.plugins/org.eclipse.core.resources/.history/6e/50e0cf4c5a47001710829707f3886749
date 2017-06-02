@@ -50,19 +50,20 @@ public class ControlDeveloper {
 		//cm1.TextFile(f, true);
 		//IOType textFile =new TextFile(cd1.myfile ,false);
 		//cm.save(textFile);
-		ControlDeveloper cd = new ControlDeveloper();
 		File myFile =new File(System.getProperty("user.dir")+"\\meine_datei.txt");
 		ControlModel c= new ControlModel();
-		
 		c.load(myFile);
 		c.getControlProcess().add(new Direction(4));
 		c.getControlProcess().add(new Pause(4));
 		for (int i = 0; c.getControlProcess().get(i) != null;i++){
 			System.out.println(c.getControlProcess().get(i).toString());
 		}
-		
+			
+		//System.out.println(c.getControlProcess().get(0).toString());
 		c.save(myFile);
-		
+		//CommandList cList = new CommandList();
+		//cList.add(new Direction(5));
+		//cm.save(myFile);
 		
 	}
 

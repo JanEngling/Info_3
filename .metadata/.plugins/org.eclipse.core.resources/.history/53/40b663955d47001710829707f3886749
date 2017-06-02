@@ -96,10 +96,6 @@ public class ControlModel {
 	public boolean load(File myFile) {
 		Vector<String> v = new Vector<String>();
 		TextFile loadFile = new TextFile(myFile, false);
-		if (myFile.length()==0){
-			System.out.println("leer");
-			return false;
-		}
 		loadFile.read(v);
 
 		for (int i = 0; v.get(i) != "Ende"; i++) {
