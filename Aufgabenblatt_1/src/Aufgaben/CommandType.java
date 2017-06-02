@@ -42,21 +42,13 @@ public class CommandType {										//erstell aus geholtem namen eine Instance d
 	 */
 	public Command createInstance() { 							// holt namen über getString und erzeugt
 		if (getName() == "Direction") {							// statt getName() kann auch dirket name verwendet werden
-			Command c = new Direction();						// wenn die Objekte erzeugt werden bekommt das Command den entsprechende Nammen
-			c.setName("Direction");
-			return c;
+			return new Direction();
 		} else if (getName() == "Gear") {
-			Command c = new Gear();
-			c.setName("Gear");
-			return c;
+			return new Gear();
 		} else if (getName() == "Pause") {
-			Command c = new Pause();
-			c.setName("Pause");
-			return c;
+			return new Pause();
 		} else if (getName() == "Repetition") {
-			Command c = new Repetition();
-			c.setName("Repetition");
-			return c;
+			return new Repetition();
 		} else
 			return null;
 	}
