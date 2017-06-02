@@ -17,7 +17,7 @@ public class ControlDeveloper {
 	private static Command[] commands = new Command[10];
 	private static ControlDeveloper cd1 = new ControlDeveloper();
 	private static ControlModel cm;
-	private File myfile =new File(System.getProperty("user.dir")+"\\meine_datei.txt");
+	//private static File myFile =new File(System.getProperty("user.dir")+"\\meine_datei.txt");
 	/**
 	 * @return Gibt den Namen des ControlDevelopers zurück
 	 */
@@ -43,14 +43,28 @@ public class ControlDeveloper {
 		//Test
 		//ControlModel cm=new ControlModel();
 		//Vector<String> v=new Vector();
-		String test =new String ("Hallo");
+		//String test =new String ("Hallo");
 		//v.add(test);
-		File f=new File("zeug");
-		cm.getInstance();
+		//File f=new File("zeug");
+		//cm.getInstance();
 		//cm1.TextFile(f, true);
-		IOType textFile =new TextFile(cd1.myfile ,false);
+		//IOType textFile =new TextFile(cd1.myfile ,false);
 		//cm.save(textFile);
-
+		File myFile =new File(System.getProperty("user.dir")+"\\meine_datei.txt");
+		ControlModel c= new ControlModel();
+		c.load(myFile);
+		c.getControlProcess().add(new Direction(4));
+		c.getControlProcess().add(new Pause(4));
+		for (int i = 0; c.getControlProcess().get(i) != null;i++){
+			System.out.println(c.getControlProcess().get(i).toString());
+		}
+			
+		//System.out.println(c.getControlProcess().get(0).toString());
+		c.save(myFile);
+		//CommandList cList = new CommandList();
+		//cList.add(new Direction(5));
+		//cm.save(myFile);
+		
 	}
 
 	/**

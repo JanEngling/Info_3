@@ -42,7 +42,7 @@ public class CommandList {
 	 *            Anfang der verketteten Liste
 	 * @return Liefert die Laenge der Liste zur¸ck.
 	 */
-	private int groeﬂe(Element root) {
+	public int groeﬂe(Element root) {
 		int counter = 0;
 		Element aktPos = root; 				// Hilfsvariable
 
@@ -182,9 +182,17 @@ public class CommandList {
 		for (int i=0; aktPos.getNext()!=null; i++){
 			aktPos = aktPos.getNext();
 		}
+		if(groeﬂe(root)==0){
+			return null;
+		}else if (groeﬂe(root)==1){
+			s.addElement(aktPos.getElement().toString());
+			return s;
+		}
 		for (int j=0; aktPos.getPrev()!=null; j++){
 			s.add(aktPos.getElement().toString());
+			aktPos = aktPos.getPrev();
 		}
+		s.add(root.getElement().toString());
 		return s;
 	}
 }

@@ -11,51 +11,54 @@ import java.io.File;
 import java.util.Vector;
 import hsrt.mec.controldeveloper.io.IOType;
 import hsrt.mec.controldeveloper.io.TextFile;
-
+import java.io.*;
 
 //soll objecte von create instance in verkettete Liste einfügen, remove...
 public class ControlModel {
-	private  static ControlModel instance = new ControlModel();
-	private  static CommandType[] commandTypes = new CommandType[4];
-	private  static CommandList controlProcess;
+	private static ControlModel instance;
+	private static CommandType[] commandTypes = new CommandType[4];
+	private CommandList controlProcess = new CommandList();
 
 	// File file =new File("C:\Users\Jan\Desktop\Hochschule\SS17_17\Informatik
 	// 3");
-	//Vextor<String> v =new Vector<String>();
-	//TextFile tf = new hsrt.mec.controldeveloper.io.TextFile(false);
+	// Vextor<String> v =new Vector<String>();
+	// TextFile tf = new hsrt.mec.controldeveloper.io.TextFile(false);
 	/**
 	 * experiment
+	 * 
 	 * @param f
 	 * @param b
 	 */
 	/*
-	public void TextFile(File f, boolean b){	
-	}
-	*/
-	
+	 * public void TextFile(File f, boolean b){ }
+	 */
+
 	/**
 	 * Standartkonstruktor von ControlModel
 	 */
-	private ControlModel() {
+	// Hiernoch fehler
+	public ControlModel() {
 	}
-	
+
 	/**
-	 * braucht man um zu definieren was der input is 
+	 * braucht man um zu definieren was der input is
+	 * 
 	 * @param f
 	 * @param b
 	 */
 
 	/**
 	 * Getter-Methode
+	 * 
 	 * @return Gibt die Referenz des Obejekts ControlModel zurück.
 	 */
 	public ControlModel getInstance() {
-		
-		return instance;
+		return new ControlModel();
 	}
 
 	/**
-	 * Befüllt erste Liste bzw. Array mit allen möglichen CommandType Objekten (4)
+	 * Befüllt erste Liste bzw. Array mit allen möglichen CommandType Objekten
+	 * (4)
 	 */
 
 	public void createCommandTypes() {
@@ -64,25 +67,24 @@ public class ControlModel {
 		commandTypes[2] = new CommandType("Repetition");
 		commandTypes[3] = new CommandType("Pause");
 	}
-	
-	
-	// Methoden um die Liste zu verwalten weiß aber noch nicht wie das ganze mit den Button zusammenhängt!
-	public void addCommand(){
+
+	// Methoden um die Liste zu verwalten weiß aber noch nicht wie das ganze mit
+	// den Button zusammenhängt!
+	public void addCommand() {
 		controlProcess.add(createInstance());
 	}
-	
-	public void removeCommand(int pos){
+
+	public void removeCommand(int pos) {
 		controlProcess.remove(pos);
 	}
-	
-	public void moveUpCommand(int pos){
+
+	public void moveUpCommand(int pos) {
 		controlProcess.moveUp(pos);
 	}
-	
-	public void moveDownCommand(int pos){
+
+	public void moveDownCommand(int pos) {
 		controlProcess.moveDown(pos);
 	}
-	
 
 	private Command createInstance() {
 		// TODO Auto-generated method stub
@@ -98,25 +100,30 @@ public class ControlModel {
 		Vector<String> v = new Vector<String>();
 		TextFile loadFile = new TextFile(myFile, false);
 		loadFile.read(v);
-		//beabreitung vector v[0] = erste zeile
-		for (int i =0; v.get(i) != null; i++){
+
+		for (int i = 0; v.get(i) != "Ende"; i++) {
 			String[] parts = v.get(i).split(":");
-			switch (parts[0]){
-				case "Direction":	controlProcess.add(new Direction(Integer.valueOf(parts[1])));
-									break;
-				case "Gear":		controlProcess.add(new Gear(Integer.valueOf(parts[1]), Double.valueOf(parts[2])));
-									break;
-				case "Pause":		controlProcess.add(new Pause(Double.valueOf(parts[1])));
-									break;
-				case "Repetition":	controlProcess.add(new Repetition(Integer.valueOf(parts[1]), Integer.valueOf(parts[2])));
-									break;
-				default:			System.out.println("Fehler");
-									return false;
+			switch (parts[0]) {
+			case "Direction":
+				controlProcess.add(new Direction(Integer.valueOf(parts[1])));
+				break;
+			case "Gear":
+				controlProcess.add(new Gear(Integer.valueOf(parts[1]), Double.valueOf(parts[2])));
+				break;
+			case "Pause":
+				controlProcess.add(new Pause(Double.valueOf(parts[1])));
+				break;
+			case "Repetition":
+				controlProcess.add(new Repetition(Integer.valueOf(parts[1]), Integer.valueOf(parts[2])));
+				break;
+			case "Ende":
+				loadFile.close();
+				return true;
+			default:
+				System.out.println("Fehler");
 			}
 		}
-		//String[] parts = v.get(0).split(":");
-		//Double a = Double.valueOf(parts[0]);
-		//v.get(i).split(9
+
 		loadFile.close();
 		return true;
 	}
@@ -129,7 +136,9 @@ public class ControlModel {
 	public boolean save(File myFile) {
 		TextFile saveFile = new TextFile(myFile, false);
 		Vector<String> v = new Vector<String>();
-		v= controlProcess.readList();
+		System.out.println("Saved");
+		v = controlProcess.readList();
+		v.add("Ende");
 		saveFile.write(v);
 		saveFile.close();
 		return true;
@@ -141,7 +150,7 @@ public class ControlModel {
 	 * @param c
 	 *            Bekommt Command übergeben
 	 */
-	
+
 	public void commandPerformed(Command c) {
 	}
 
@@ -151,10 +160,7 @@ public class ControlModel {
 	 * @return
 	 */
 	public CommandList getControlProcess() {
-		return null;
+		return controlProcess;
 	}
-	
 
-	
-	
 }
