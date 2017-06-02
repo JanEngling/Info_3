@@ -11,7 +11,9 @@ import java.io.File;
 import java.util.Vector;
 import hsrt.mec.controldeveloper.io.IOType;
 import hsrt.mec.controldeveloper.io.TextFile;
+//import java.io.*;
 
+//soll objecte von create instance in verkettete Liste einfügen, remove...
 public class ControlModel {
 
 	private static ControlModel instance = null;

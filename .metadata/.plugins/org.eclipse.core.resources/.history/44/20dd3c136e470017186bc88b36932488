@@ -17,8 +17,8 @@ public class ControlDeveloper {
 	private static Command[] commands = new Command[10];
 	private static ControlDeveloper cd1 = new ControlDeveloper();
 	private static ControlModel cm;
+	 
 	private static File myFile =new File(System.getProperty("user.dir")+"\\meine_datei.txt");
-	
 	/**
 	 * @return Gibt den Namen des ControlDevelopers zurück
 	 */
@@ -41,6 +41,7 @@ public class ControlDeveloper {
 	 *            Überabeparameter an main
 	 */
 	public static void main(String[] s) {
+		//File myFile = new File(System.getProperty("user.dir")+"\\meine_datei.txt");
 		ControlModel c = ControlModel.getInstance();
 		c.load(myFile);
 		c.getControlProcess().add(new Direction(4));
