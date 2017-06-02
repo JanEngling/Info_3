@@ -19,13 +19,7 @@ public class CommandType {										//erstell aus geholtem namen eine Instance d
 		return name;
 	}
 
-	/**
-	 * Übernimmt den übergebenen String als Name.
-	 * @param name Name
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 
 	/**
 	 * Konstruktor: Übergebener String wird als Name übernommen.
