@@ -25,9 +25,9 @@ public class ControlModel {
 	}
 
 	/**
-	 * Gibt ControlModel zurück
+	 * Erzeugt ein Objekt von ConrolModel, wenn noch keins vorhanden ist.
 	 * 
-	 * @return Gibt genau eine Instanz von ControlModel zurück
+	 * @return Gibt genau eine Instanz von ControlModel zurück.
 	 */
 
 	public static ControlModel getInstance() {
@@ -51,9 +51,9 @@ public class ControlModel {
 	}
 
 	/**
-	 * Lädt Strings aus einer vorher erzeugten Datei
+	 * Lädt Strings aus einer vorher erzeugten Datei.
 	 * 
-	 * @return true wenn erfolgreich, false wenn erfolglos
+	 * @return true wenn erfolgreich, false wenn erfolglos.
 	 */
 	public boolean load(File myFile) {
 		Vector<String> v = new Vector<String>();
@@ -94,7 +94,7 @@ public class ControlModel {
 	}
 
 	/**
-	 * Speichert Liste als Strings in Datei
+	 * Speichert Liste als Strings in Datei.
 	 * 
 	 * @return true wenn erfolgreich, false wenn erfolglos.
 	 */
@@ -110,19 +110,17 @@ public class ControlModel {
 	}
 
 	/**
+	 * Bekommt ein Objekt vom Typ Command übergeben.
 	 * 
-	 * @param c
-	 *            Bekommt ein Objekt vom Typ Command übergeben
+	 * @param c Command
 	 */
-
 	public void commandPerformed(Command c) {
 	}
 
 	/**
 	 * Getter-Methode
 	 * 
-	 * @return Gibt die Reference der verketteteten Liste von Typ CommandList
-	 *         zurück
+	 * @return Gibt die Reference der verketteteten Liste von Typ CommandList zurück.
 	 */
 	public CommandList getControlProcess() {
 		return controlProcess;

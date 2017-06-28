@@ -8,21 +8,22 @@ package Aufgaben;
  * @version 1.0
  * @since JDK 1.8
  */
+
 public class CommandType {										//erstell aus geholtem namen eine Instance des Objects der class command
 	private String name;
 
 	/**
 	 * Getter-Methode
+	 * 
 	 * @return Gibt Namen des CommandTypes zurück.
 	 */
 	public String getName() {
 		return name;
 	}
 
-	
-
 	/**
 	 * Konstruktor: Übergebener String wird als Name übernommen.
+	 * 
 	 * @param name Name 
 	 */
 	public CommandType(String name) {
@@ -31,6 +32,7 @@ public class CommandType {										//erstell aus geholtem namen eine Instance d
 
 	/**
 	 * Erstellt anhand des Namens Objekte und gibt diese zurück.  
+	 * 
 	 * @return Liefert ein Objekt von Typ Command zurück.
 	 * 		   Null wenn keiner der 4 vorgegebenen Nameen passt.
 	 */

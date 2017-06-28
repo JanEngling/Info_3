@@ -3,6 +3,7 @@ package Aufgaben;
 /**
  * Element ist ein Element einer Liste. 
  * Hier sind die Methoden implementiert um auf die Variablen zu zugreifen.  
+ * 
  * @author Andreas Sautter u. Jan Engling
  * @version 1.0
  * @since JDK 1.8
@@ -16,15 +17,14 @@ public class Element {
 	/**
 	 * Weißt dem Element ein Objekt von Typ Command zu.
 	 * 
-	 * @param command
-	 *            Objekt von Typ Command
+	 * @param command Objekt von Typ Command
 	 */
 	public Element(Command command) {
 		this.element = command;
 	}
 
 	/**
-	 * @return Gibt das Element bzw. Inhalt von Typ Command zurück
+	 * @return Gibt das Element bzw. Inhalt von Typ Command zurück.
 	 */
 	public Command getElement() {
 		return element;
@@ -46,8 +46,9 @@ public class Element {
 	}
 
 	/**
+	 * Setzt Übergebenes Element als next
+	 * 
 	 * @param next
-	 *            Setzt Übergebenes Element als next
 	 */
 	public void setNext(Element next) {
 		this.next = next;
@@ -61,8 +62,9 @@ public class Element {
 	}
 
 	/**
+	 * Setzt Übergebenes Element als next
+	 * 
 	 * @param prev
-	 *            Setzt Übergebenes Element als prev
 	 */
 	public void setPrev(Element prev) {
 		this.prev = prev;

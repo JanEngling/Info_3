@@ -13,10 +13,9 @@ public class Direction extends Command implements IDirection {
 	private int degree;
 
 	/**
-	 * Konstruktor mit selbst gewählter Richtung
+	 * Konstruktor mit selbst gewählter Richtung.
 	 * 
-	 * @param degree
-	 *            Gibt Winkle der Bewegung an
+	 * @param degree Winkel der Bewegung
 	 */
 	public Direction(int degree) {
 		this.setName("Direction");

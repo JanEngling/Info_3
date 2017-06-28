@@ -6,7 +6,8 @@ import hsrt.mec.controldeveloper.io.IOType;
 import hsrt.mec.controldeveloper.io.TextFile;
 
 /**
- * Controler der gesamten Funktionalität des Programms
+ * Controler der gesamten Funktionalität des Programms.
+ * Beinhaltet auch die Main.
  * 
  * @author Andreas & Jan
  * @version 1.0
@@ -23,8 +24,9 @@ public class ControlDeveloper {
 	}
 
 	/**
-	 * @param name
-	 *            Übergebener Name wird Name des ControlDevelopers
+	 * Übergebener Name wird Name des ControlDevelopers.
+	 * 
+	 * @param name Name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -33,11 +35,11 @@ public class ControlDeveloper {
 	/**
 	 * Hauptprogramm zeigt Funktionalität der Unterklassen
 	 * 
-	 * @param s
-	 *            Überabeparameter an main
+	 * @param s Überabeparameter an main
 	 */
 	public static void main(String[] s) {
 		ControlModel c = ControlModel.getInstance();
+		MainWindow gui = new MainWindow();
 
 		c.getControlProcess().add(new Direction(4));
 		c.getControlProcess().add(new Pause(4));
@@ -50,6 +52,9 @@ public class ControlDeveloper {
 		for (int i = 0; c.getControlProcess().get(i) != null; i++) {
 			System.out.println(c.getControlProcess().get(i).toString());
 		}
+		
+		//GUI
+		gui.mainWindow(c);
 	}
 
 }

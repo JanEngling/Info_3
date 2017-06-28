@@ -17,8 +17,7 @@ public class CommandList {
 	/**
 	 * Mit der Methode add kann ein neues Listen Element hinzugefügt werden.
 	 * 
-	 * @param c
-	 *         Objekt von Typ Command
+	 * @param c Objekt von Typ Command
 	 * @return True wenn das Element erfolgreich hinzugefügt wurde.
 	 */
 	public boolean add(Command c) {
@@ -38,8 +37,7 @@ public class CommandList {
 	/**
 	 * Mit der Methode groeße kann die Laenge der Liste bestimmt werden.
 	 * 
-	 * @param root
-	 *            Anfang der verketteten Liste
+	 * @param root Anfang der verketteten Liste
 	 * @return Liefert die Laenge der Liste zurück.
 	 */
 	public int groeße(Element root) {
@@ -61,10 +59,10 @@ public class CommandList {
 	 * Mit der Methode remove kann ein Element an einer bestimmten Position
 	 * gelöscht werden.
 	 * 
-	 * @param pos
-	 *     		 Position der verketteten Liste
+	 * @param pos Position der verketteten Liste
+	 * 
 	 * @return True, wenn das Element erfolgreich gelöscht wurde, false wenn
-	 *         (pos außerhalb Listengröße ???)
+	 *         pos außerhalb Listengröße. 
 	 */
 	public boolean remove(int pos) {
 		Element aktPos = root;
@@ -96,8 +94,8 @@ public class CommandList {
 	 * Mit der Methode get kann auf ein bestimmtes Element in der Liste
 	 * zugegriffen werden und liefert den Inhalt des Elements zurück.
 	 * 
-	 * @param pos
-	 *            Position des zu holenden Listenelements
+	 * @param pos Position des zu holenden Listenelements
+	 * 
 	 * @return Gibt Objektt von Typ Command zurück oder null wenn pos nicht
 	 *         enthalten
 	 */
@@ -117,10 +115,9 @@ public class CommandList {
 	 * Mit der Methode moveUp kann ein bestimmtes Element in der Liste hoch
 	 * geschoben werden.
 	 * 
-	 * @param pos
-	 *            Position des zu verschiebenden Listenelements
+	 * @param pos Position des zu verschiebenden Listenelements
 	 * @return Gibt true zurück wenn die Operation erfolgreich war, false wenn
-	 *         ???
+	 *         erfolglos
 	 */
 	public boolean moveUp(int pos) {
 		Element aktPos = root;
@@ -147,10 +144,10 @@ public class CommandList {
 	 * Mit der Methode moveDown kann ein bestimmtes Element in der Liste runter
 	 * geschoben werden.
 	 * 
-	 * @param pos
-	 *            Position des zu verschiebenden Listenelements
-	 * @return Gibt true zurück, wenn die Operation erfolgreich war, false
-	 *         wenn???
+	 * @param pos Position des zu verschiebenden Listenelements
+	 * 
+	 * @return Gibt true zurück, wenn die Operation erfolgreich war, false wenn
+	 *         erfolglos.
 	 */
 	public boolean moveDown(int pos) {
 		Element aktPos = root;
@@ -176,8 +173,9 @@ public class CommandList {
 	
 	//Clear list
 	/**
+	 * Methode um die verkette Liste in einen Vektor String zu wandeln.
 	 * 
-	 * @return Gibt Vektor mit werten zurück
+	 * @return Gibt Vektor mit Werten zurück.
 	 */
 	public Vector<String> readList (){
 		Vector<String> s = new Vector<String>();
@@ -185,17 +183,17 @@ public class CommandList {
 		for (int i=0; aktPos.getNext()!=null; i++){
 			aktPos = aktPos.getNext();
 		}
-		if(groeße(root)==0){
+		if(groeße(root)==0){										// 1.Fall: Liste leer 
 			return null;
-		}else if (groeße(root)==1){
+		}else if (groeße(root)==1){                                 // 2.Fall: Liste besitzt nur ein Element
 			s.addElement(aktPos.getElement().toString());
 			return s;
 		}
-		for (int j=0; aktPos.getPrev()!=null; j++){
+		for (int j=0; aktPos.getPrev()!=null; j++){					// 3.Fall Liste besitzt mehr als 1 Element
 			s.add(aktPos.getElement().toString());
 			aktPos = aktPos.getPrev();
 		}
-		s.add(root.getElement().toString());
+		s.add(root.getElement().toString());						// root wird noch angehängt
 		return s;
 	}
 }
