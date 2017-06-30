@@ -4,4 +4,10 @@
 <fullyQualifiedTypeName name="hsrt.mec.controldeveloper.io.IOType"/>
 <fullyQualifiedTypeName name="hsrt.mec.controldeveloper.io.TextFile"/>
 <fullyQualifiedTypeName name="java.util.Vector"/>
+<fullyQualifiedTypeName name="hsrt.mec.controldeveloper.io.SerialUSB"/>
+<fullyQualifiedTypeName name="hsrt.mec.controldeveloper.core.com.ComPortHandler"/>
+<fullyQualifiedTypeName name="hsrt.mec.controldeveloper.core.com.IComListener"/>
+<fullyQualifiedTypeName name="hsrt.mec.controldeveloper.core.com.ComPort"/>
+<fullyQualifiedTypeName name="hsrt.mec.controldeveloper.core.com.ComHandler"/>
+<fullyQualifiedTypeName name="hsrt.mec.controldeveloper.core.com.command.ICommand"/>
 </qualifiedTypeNameHistroy>
