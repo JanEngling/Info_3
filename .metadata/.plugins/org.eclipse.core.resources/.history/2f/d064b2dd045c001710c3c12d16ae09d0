@@ -39,7 +39,6 @@ public class ControlDeveloper {
 	 */
 	public static void main(String[] s) {
 		ControlModel c = ControlModel.getInstance();
-		MainWindow gui = new MainWindow();
 
 		c.getControlProcess().add(new Direction(4));
 		c.getControlProcess().add(new Pause(4));
@@ -54,7 +53,7 @@ public class ControlDeveloper {
 		}
 		
 		//GUI
-		gui.mainWindow(c);
+		MainWindow gui = new MainWindow(c);
 	}
 
 }
