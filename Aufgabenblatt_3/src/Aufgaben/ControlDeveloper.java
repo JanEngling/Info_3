@@ -76,7 +76,7 @@ public class ControlDeveloper {
 		//Ende neu Jan
 		
 		//GUI
-		gui.mainWindow(c);
+		gui.mainWindow();
 	}
 
 }
