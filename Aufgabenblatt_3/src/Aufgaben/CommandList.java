@@ -13,7 +13,11 @@ import Aufgaben.Element;
  */
 public class CommandList {
 	private Element root = null;
-
+	private CommandListModel clm = null;
+	
+	public CommandList(CommandListModel clm){
+		this.clm = clm;
+	}
 	/**
 	 * Mit der Methode add kann ein neues Listen Element hinzugefügt werden.
 	 * 
@@ -25,15 +29,27 @@ public class CommandList {
 
 		if (root == null) {
 			root = pos; 					// Wurzel auf erstes Element setzten
+			clm.dataChanged();
 			return true;
 		} else {
 			pos.setNext(root); 				// Aktuelle Wurzel dem neuen Element als Next zuweisen
 			root.setPrev(pos); 				// Dem "alten ersten" Element das vorhergehende Element zuweisen
 			root = pos; 					// neuer Listenanfang der Variable root zuweisen
+			clm.dataChanged();
 			return true;
 		}
 	}
+	
+	public void print(){
+		Element aktPos = root;
 
+		for (int i = groeße(root); i != 0; i--) {
+			
+			System.out.println(aktPos.getElement().toString());
+			
+			aktPos = aktPos.getNext();
+		}
+	}
 	/**
 	 * Mit der Methode groeße kann die Laenge der Liste bestimmt werden.
 	 * 
@@ -54,7 +70,25 @@ public class CommandList {
 			return counter;
 		}
 	}
+	/**
+	 * Mit der Methode groeße kann die Laenge der Liste bestimmt werden.
+	 * 
+	 * @return Liefert die Laenge der Liste zurück.
+	 */
+	public int groeße() {
+		int counter = 0;
+		Element aktPos = root; 				// Hilfsvariable
 
+		if (root == null) { 				// Wenn Liste leer
+			return counter;
+		} else {
+			do { 							// Größe der Liste bestimmen
+				counter++; 					// Zähler
+				aktPos = aktPos.getNext(); 	// Liste durchitterieren
+			} while (aktPos != null);
+			return counter;
+		}
+	}
 	/**
 	 * Mit der Methode remove kann ein Element an einer bestimmten Position
 	 * gelöscht werden.
@@ -75,13 +109,19 @@ public class CommandList {
 				if (vorAktPos == null && nachAktPos != null) {  // Fallunterscheidung 1.Fall: Anfang; 2.Fall: Mitte 3.Fall: Ende;
 					root = nachAktPos;
 					root.setPrev(null);
+					ControlModel.getInstance().getClm().dataChanged();
 					return true;
 				} else if (vorAktPos != null && nachAktPos != null) {
 					vorAktPos.setNext(aktPos.getNext());
 					nachAktPos.setPrev(aktPos.getPrev());
+					ControlModel.getInstance().getClm().dataChanged();
 					return true;
 				} else if (vorAktPos != null && nachAktPos == null) {
 					vorAktPos.setNext(null);
+					ControlModel.getInstance().getClm().dataChanged();
+					return true;
+				}else if (vorAktPos == null && nachAktPos == null){
+					root = null;
 					return true;
 				}
 			}
@@ -137,6 +177,7 @@ public class CommandList {
 			}
 			aktPos = aktPos.getNext();
 		}
+		//clm.dataChanged();
 		return false;
 	}
 
@@ -167,6 +208,7 @@ public class CommandList {
 			}
 			aktPos = aktPos.getNext();
 		}
+		//clm.dataChanged();
 		return false;
 	}
 	

@@ -3,17 +3,20 @@ package Aufgaben;
 import java.awt.Color;
 
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
-public class ViewSouth extends JPanel{
-	
+public class ViewSouth extends JPanel {
+
 	private ControlModel c;
-	
-	
-	public ViewSouth(ControlModel c) {
-		this.c = c;
-		
-		setBackground(Color.blue);
+	private JTextArea txtara;
+
+	public ViewSouth() {
+		this.c = ControlModel.getInstance();
+
+		this.txtara = new JTextArea(10, 20);
+		this.add(txtara);
+		this.setBackground(Color.WHITE);
+
 	}
-	
 
 }

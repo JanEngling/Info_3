@@ -15,11 +15,12 @@ import hsrt.mec.controldeveloper.core.com.command.ICommand;
 import hsrt.mec.controldeveloper.io.IOType;
 import hsrt.mec.controldeveloper.io.TextFile;
 
-public class ControlModel implements IComListener{
+public class ControlModel implements IComListener {
 
 	private static ControlModel instance = null;
 	private String[] commandTypes = new String[4];
-	private CommandList controlProcess = new CommandList();
+	private CommandListModel clm = new CommandListModel();
+	private CommandList controlProcess = new CommandList(clm);
 
 	/**
 	 * Standartkonstruktor von ControlModel
@@ -40,14 +41,15 @@ public class ControlModel implements IComListener{
 		} else
 			return instance;
 	}
-	
-	public String[] getCommandTypes(){
+
+	public String[] getCommandTypes() {
 		commandTypes[0] = new String("Direction");
 		commandTypes[1] = new String("Gear");
 		commandTypes[2] = new String("Repetition");
 		commandTypes[3] = new String("Pause");
 		return commandTypes;
 	}
+
 	/**
 	 * Befüllt erste Liste bzw. Array mit allen möglichen CommandType Objekten
 	 * (4)
@@ -59,7 +61,7 @@ public class ControlModel implements IComListener{
 		commandTypes[2] = new String("Repetition");
 		commandTypes[3] = new String("Pause");
 	}
-	
+
 	/**
 	 * Lädt Strings aus einer vorher erzeugten Datei.
 	 * 
@@ -77,7 +79,7 @@ public class ControlModel implements IComListener{
 			for (int i = 0; v.get(i) != "Ende"; i++) {
 				String[] parts = v.get(i).split(":");
 				switch (parts[0]) {
-				case "Direction":	///0 zeilenende !!!!
+				case "Direction": /// 0 zeilenende !!!!
 					controlProcess.add(new Direction(Integer.valueOf(parts[1])));
 					break;
 				case "Gear":
@@ -122,7 +124,8 @@ public class ControlModel implements IComListener{
 	/**
 	 * Bekommt ein Objekt vom Typ Command übergeben.
 	 * 
-	 * @param c Command
+	 * @param c
+	 *            Command
 	 */
 	public void commandPerformed(Command c) {
 	}
@@ -130,7 +133,8 @@ public class ControlModel implements IComListener{
 	/**
 	 * Getter-Methode
 	 * 
-	 * @return Gibt die Reference der verketteteten Liste von Typ CommandList zurück.
+	 * @return Gibt die Reference der verketteteten Liste von Typ CommandList
+	 *         zurück.
 	 */
 	public CommandList getControlProcess() {
 		return controlProcess;
@@ -138,11 +142,21 @@ public class ControlModel implements IComListener{
 
 	/**
 	 * Methode aus IComListener
+	 * 
 	 * @param arg0
 	 */
 	public void commandPerformed(ICommand arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
+	// Grooesse der Liste bestimmen
+	public int getControlProcessGroesse() {
+		return controlProcess.groeße();
+	}
+
+	// Zugriff auf CommandListModel
+	public CommandListModel getClm() {
+		return clm;
+	}
 }
