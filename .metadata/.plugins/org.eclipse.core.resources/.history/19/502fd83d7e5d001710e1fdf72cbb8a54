@@ -1,54 +1,43 @@
 package Aufgaben;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.event.TableModelListener;
+import javax.swing.JViewport;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableModel;
 
 public class ViewMiddle extends JPanel{
 	private ControlModel c;
 	
 	private JTable table;
-	//private CommandListModel model;
+	private CommandListModel model;
 	
-	public ViewMiddle(){
-		this.c = ControlModel.getInstance();
+	public ViewMiddle(ControlModel c){
+		this.c = c;
 		
-		this.setLayout( new BorderLayout());
+		setLayout( new BorderLayout());
+		
+		//JScrollPane sP = new JScrollPane();
+		//JLabel label = new JLabel ("No.","Commands", JLabel.CENTER);
 
-		//Border border = this.getBorder();
-		//Border margin = new LineBorder(Color.gray,4);
-		//this.setBorder(new CompoundBorder(border, margin));
-	
+		//JViewport header = new JViewport();
+		//header.setView(label);
+		//sP.setColumnHeaderView(header);
+		
+		this.model = new CommandListModel(c);
+		this.table = new JTable((TableModel) this.model);
+		
+		this.add(new JScrollPane(table), BorderLayout.CENTER);
+		
 
-        
-        this.add(new MiddleButton(), BorderLayout.SOUTH);
-        
-        this.table = new JTable(c.getClm());
-        this.add(new JScrollPane(table),BorderLayout.CENTER);
-        
-        c.getClm().setTable(table);
-        
-        //c.getControlProcess().remove(0);
-		//c.getClm().dataChanged();
-       
-        JButton b = new JButton("test");
-        this.add(b, BorderLayout.NORTH);
-        b.addActionListener(new ActionListener(){
-        	public void actionPerformed(ActionEvent a){
-        		System.out.println("Zeile: " + table.getSelectedRow());
-        	}
-        });
-
+		
+		//setBackground(Color.red);
 	}
-
 }
