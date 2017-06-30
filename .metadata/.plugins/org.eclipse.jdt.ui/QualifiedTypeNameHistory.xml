@@ -10,4 +10,9 @@
 <fullyQualifiedTypeName name="hsrt.mec.controldeveloper.core.com.ComPort"/>
 <fullyQualifiedTypeName name="hsrt.mec.controldeveloper.core.com.ComHandler"/>
 <fullyQualifiedTypeName name="hsrt.mec.controldeveloper.core.com.command.ICommand"/>
+<fullyQualifiedTypeName name="java.awt.GridBagConstraints"/>
+<fullyQualifiedTypeName name="javax.swing.JButton"/>
+<fullyQualifiedTypeName name="javax.swing.JList"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="Aufgaben.CommandType"/>
 </qualifiedTypeNameHistroy>
