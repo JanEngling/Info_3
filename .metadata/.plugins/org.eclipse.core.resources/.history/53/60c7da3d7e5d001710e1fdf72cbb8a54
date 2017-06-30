@@ -1,0 +1,86 @@
+package Aufgaben;
+
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+public class MainWindow extends JFrame {
+	private ControlModel c;
+	
+	private JFrame gui = new JFrame("Control-Developer");
+	private JPanel panel = new JPanel();
+	
+	private GridBagConstraints middle = new GridBagConstraints(); 
+	private GridBagConstraints east = new GridBagConstraints(); 
+	private GridBagConstraints west = new GridBagConstraints(); 
+	private GridBagConstraints south = new GridBagConstraints();
+	
+	private ViewMiddle vm = new ViewMiddle(); 
+	private ViewWest vw = new ViewWest(); 
+	private ViewEast ve = new ViewEast();
+	private ViewSouth vs = new ViewSouth();
+	
+	
+	public MainWindow() {
+		this.c = ControlModel.getInstance();
+		
+		// Fenstergröße festlegen 
+		gui.setSize(1920,1080);
+		
+		// Aufteilung Fenster 
+		panel.setLayout(new GridBagLayout());
+		
+		// Panel Fenster hinzufügen 
+		gui.add(panel);
+		
+
+		// Menü Leiste hinzufügen
+		MenuBar menu = new MenuBar();
+		gui.setJMenuBar(menu.getJMenuBar(c));
+		
+		// Mitte Commandlist
+		middle.anchor = GridBagConstraints.PAGE_START;
+		middle.weightx = 2.0;
+		middle.weighty = 2.0;
+		middle.gridx = 1;
+		middle.gridy = 0;
+		panel.add(vm, middle);
+		
+		
+		// Westen Bedienfeld
+		west.anchor = GridBagConstraints.PAGE_START;
+		west.gridx = 2;
+		west.gridy = 0;
+		panel.add(vw, west);
+		
+		
+		// Osten Commandtypes
+		east.anchor = GridBagConstraints.PAGE_START;
+		east.ipadx = 50; //
+		east.ipady = 50;
+		east.gridx = 0;
+		east.gridy = 0;
+		panel.add(ve, east);
+		
+		//Süden Anzeigefeld 
+		south.anchor = GridBagConstraints.PAGE_END;
+		south.fill = GridBagConstraints.HORIZONTAL;
+		south.gridwidth = 3;
+		south.weightx = 0.5;
+		south.weighty = 0.5;
+		south.gridx = 0;
+		south.gridy = 1;
+		panel.add(vs, south);
+		
+
+
+		// Fenster sichtbar machen
+		gui.setVisible(true);
+		
+		
+	}
+}
