@@ -8,8 +8,8 @@ public class ViewWest extends JPanel{
 	
 	private ControlModel c;
 	
-	public ViewWest(ControlModel c) {
-		this.c = c;
+	public ViewWest() {
+		this.c = ControlModel.getInstance();
 		
 		setBackground(Color.green);
 	}

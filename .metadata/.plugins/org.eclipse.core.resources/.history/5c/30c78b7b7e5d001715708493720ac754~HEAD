@@ -1,0 +1,40 @@
+package Aufgaben;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+public class MenuBar {
+	
+	private JMenuBar bar = new JMenuBar();
+	private JMenu file = new JMenu("File");
+	private JMenu info = new JMenu("Info");
+	private JMenuItem load = new JMenuItem("Datei laden");
+	private JMenuItem save = new JMenuItem("Datei speichern");
+	
+
+	public JMenuBar getJMenuBar(ControlModel c) {
+		bar.add(file);
+		file.add(load);
+		file.add(save);
+		bar.add(info);
+		
+		/*
+		save.addActionListener(new ActionListener(){
+			public void actionPerformed (ActionEvent ae){
+				c.getControlProcess().remove(0);
+	            System.out.println("Schleife Action Listener Menue");
+	            c.getClm().fireTableDataChanged();
+	            System.out.println("Größe3: " + ControlModel.getInstance().getControlProcessGroesse());
+			}
+		});
+		*/
+		
+		
+		return bar;
+	}
+
+}

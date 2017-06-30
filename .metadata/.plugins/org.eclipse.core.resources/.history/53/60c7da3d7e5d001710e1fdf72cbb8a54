@@ -2,6 +2,8 @@ package Aufgaben;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -17,14 +19,14 @@ public class MainWindow extends JFrame {
 	private GridBagConstraints west = new GridBagConstraints(); 
 	private GridBagConstraints south = new GridBagConstraints();
 	
-	private ViewMiddle vm = new ViewMiddle(c); 
-	private ViewWest vw = new ViewWest(c); 
-	private ViewEast ve = new ViewEast(c);
-	private ViewSouth vs = new ViewSouth(c);
+	private ViewMiddle vm = new ViewMiddle(); 
+	private ViewWest vw = new ViewWest(); 
+	private ViewEast ve = new ViewEast();
+	private ViewSouth vs = new ViewSouth();
 	
 	
-	public MainWindow(ControlModel c) {
-		this.c = c;
+	public MainWindow() {
+		this.c = ControlModel.getInstance();
 		
 		// Fenstergröße festlegen 
 		gui.setSize(1920,1080);
@@ -41,36 +43,36 @@ public class MainWindow extends JFrame {
 		gui.setJMenuBar(menu.getJMenuBar(c));
 		
 		// Mitte Commandlist
-		//middle.gridheight = 500;
-		//middle.gridwidth = 1000;
-		middle.ipadx = 1000; //
-		middle.ipady = 1000;
-		middle.weightx = 1.0;
-		middle.weighty = 1.0;
+		middle.anchor = GridBagConstraints.PAGE_START;
+		middle.weightx = 2.0;
+		middle.weighty = 2.0;
 		middle.gridx = 1;
 		middle.gridy = 0;
 		panel.add(vm, middle);
 		
 		
 		// Westen Bedienfeld
-		west.ipadx = 1000; //
-		west.ipady = 1000;
+		west.anchor = GridBagConstraints.PAGE_START;
 		west.gridx = 2;
 		west.gridy = 0;
 		panel.add(vw, west);
 		
 		
 		// Osten Commandtypes
-		east.ipadx = 1000; //
-		east.ipady = 1000;
+		east.anchor = GridBagConstraints.PAGE_START;
+		east.ipadx = 50; //
+		east.ipady = 50;
 		east.gridx = 0;
 		east.gridy = 0;
 		panel.add(ve, east);
 		
 		//Süden Anzeigefeld 
-		//south.anchor = GridBagConstraints.PAGE_END;
+		south.anchor = GridBagConstraints.PAGE_END;
 		south.fill = GridBagConstraints.HORIZONTAL;
-	//	south.gridx = 0;
+		south.gridwidth = 3;
+		south.weightx = 0.5;
+		south.weighty = 0.5;
+		south.gridx = 0;
 		south.gridy = 1;
 		panel.add(vs, south);
 		

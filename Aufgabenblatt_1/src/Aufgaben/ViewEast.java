@@ -7,8 +7,8 @@ import javax.swing.JPanel;
 public class ViewEast extends JPanel{
 	private ControlModel c;
 	
-	public ViewEast(ControlModel c) {
-		this.c = c;
+	public ViewEast() {
+		this.c = ControlModel.getInstance();
 		
 		setBackground(Color.BLACK);
 	}
