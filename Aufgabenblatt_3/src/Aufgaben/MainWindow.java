@@ -30,6 +30,7 @@ public class MainWindow extends JFrame {
 
 	ControlModel cm = ControlModel.getInstance();
 	ViewWest vw = ViewWest.getInstance();
+	JMenuBar mb = MenuBar.getInstance();
 
 	public void mainWindow() {
 		this.c = cm;
@@ -59,8 +60,7 @@ public class MainWindow extends JFrame {
 		gui.add(panel);
 
 		// Menü Leiste hinzufügen
-		MenuBar menu = new MenuBar();
-		gui.setJMenuBar(menu.getJMenuBar(c));
+		gui.setJMenuBar(mb);
 
 		// Mitte Commandlist
 		middle.anchor = GridBagConstraints.PAGE_START;
@@ -71,17 +71,16 @@ public class MainWindow extends JFrame {
 		panel.add(vm, middle);
 		vm.setVisible(true);
 		
-		// Westen Bedienfeld
+		// Westen CommandTypes
 		west.anchor = GridBagConstraints.PAGE_START;
-		west.gridx = 2;
+		west.gridx = 0;
 		west.gridy = 0;
 		panel.add(vw, west);
 		vw.setVisible(true);
-		// Osten Commandtypes
+		
+		// Osten Bedienfeld
 		east.anchor = GridBagConstraints.PAGE_START;
-		east.ipadx = 50; //
-		east.ipady = 50;
-		east.gridx = 0;
+		east.gridx = 2;
 		east.gridy = 0;
 		panel.add(ve, east);
 		ve.setVisible(true);

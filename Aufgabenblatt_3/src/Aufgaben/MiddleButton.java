@@ -37,7 +37,6 @@ public class MiddleButton extends JPanel implements ActionListener{
 	            System.out.println("Größe2: " + ControlModel.getInstance().getControlProcessGroesse());
 			}
 		});
-		
 		*/
 		
 		pos.anchor = GridBagConstraints.LAST_LINE_START;
@@ -63,11 +62,7 @@ public class MiddleButton extends JPanel implements ActionListener{
 		pos.anchor = GridBagConstraints.LAST_LINE_END;
 		pos.weightx = 0.5;
 		pos.gridx = 4;
-		this.add(start, pos);
-		
-        //c.getControlProcess().remove(0);
-		//c.getClm().dataChanged();
-		
+		this.add(start, pos);	
 	}
 	
 	 public void actionPerformed (ActionEvent ae){
@@ -77,17 +72,13 @@ public class MiddleButton extends JPanel implements ActionListener{
 	        if(b == this.moveUp){
 	            if (c.getControlProcess().moveUp(c.getClm().getSelectedRow()))
 	            	c.getClm().setSelectedRow(c.getClm().getSelectedRow()-1);
-	            //c.getClm().dataChanged();
 	        }
 	        else if(b == this.moveDown){
 	            if	(c.getControlProcess().moveDown(c.getClm().getSelectedRow()))
 	            	 c.getClm().setSelectedRow(c.getClm().getSelectedRow()+1);
-	            //c.getClm().dataChanged();
 	        }
 	        else if(b == this.remove){
-	             c.getControlProcess().remove(c.getClm().getSelectedRow());
-	        }
-	        
+	            c.getControlProcess().remove(c.getClm().getSelectedRow());
+	        }  
 	    }
-
 }

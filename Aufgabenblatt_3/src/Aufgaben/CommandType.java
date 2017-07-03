@@ -36,14 +36,14 @@ public class CommandType {										//erstell aus geholtem namen eine Instance d
 	 * @return Liefert ein Objekt von Typ Command zurück.
 	 * 		   Null wenn keiner der 4 vorgegebenen Nameen passt.
 	 */
-	public Command createInstance() { 							// holt namen über getString und erzeugt
-		if (getName() == "Direction") {							// statt getName() kann auch dirket name verwendet werden
+	public Command createInstance() { // holt namen über getString und erzeugt
+		if (name.equals("Direction")) {							// statt getName() kann auch dirket name verwendet werden
 			return new Direction();
-		} else if (getName() == "Gear") {
+		} else if (name.equals("Gear")) {
 			return new Gear();
-		} else if (getName() == "Pause") {
+		} else if (name.equals("Pause")) {
 			return new Pause();
-		} else if (getName() == "Repetition") {
+		} else if (name.equals("Repetition")) {
 			return new Repetition();
 		} else
 			return null;

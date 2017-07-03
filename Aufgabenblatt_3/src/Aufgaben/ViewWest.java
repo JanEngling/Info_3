@@ -1,7 +1,11 @@
 package Aufgaben;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -11,6 +15,11 @@ import javax.swing.event.ListSelectionListener;
 public class ViewWest extends JPanel {
 	private static ViewWest instance = null;
 	private JList<String> l = new JList<String>();
+	private JButton add = new JButton("Add");
+	
+	private CommandType ct;
+	private String auswahl;
+	
 	ControlModel cm = ControlModel.getInstance();
 	String[] st = cm.getCommandTypes();
 	
@@ -22,20 +31,51 @@ public class ViewWest extends JPanel {
 	 */
 	// Konstruktor
 	private ViewWest() {
+	
+		this.setLayout( new BorderLayout());
+	/*	
+		String [] 
+		
+		for(CommandType temp : st)
+			l.setListData(temp.getName());
+			//l.add(temp.getName());
+		
+		*/
+		
 		l.setListData(cm.getCommandTypes());
 		l.setSelectionForeground(Color.GRAY);
 		l.setSelectionBackground(Color.orange);
-		l.setSelectedIndex(2);
-		add(l);
+		//l.setSelectedIndex(2);
+		add(l, BorderLayout.CENTER);
 		l.addListSelectionListener(new ListSelectionListener() {// ActionListener
 			public void valueChanged(ListSelectionEvent e) {
 				if (!e.getValueIsAdjusting()){
-					System.out.println(l.getSelectedIndex());	//Hier kann neues Command angelegt werden
-					System.out.println(st[l.getSelectedIndex()].toString());
+					//System.out.println(l.getSelectedIndex());	//Hier kann neues Command angelegt werden
+					//System.out.println(st[l.getSelectedIndex()].toString());
 					
+					// CommandType wird erstellt um später mit der Methode createInstance ein Command zu erzeugen 
+					auswahl = st[l.getSelectedIndex()].toString();
+					ct = new CommandType(auswahl);
 				}
 			}
 		});
+		
+		add(add, BorderLayout.SOUTH);
+		
+		add.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+            	// ct überprüfen oben es vom List Selection Listener erstellt wurde 
+            	if(ct != null){
+            		cm.getControlProcess().add(ct.createInstance());
+                	System.out.println("Groese Liste: "+ cm.getControlProcessGroesse());
+                	System.out.println("Command erstellt: " + ct.getName());
+                   // cm.getClm().dataChanged();	
+            	}
+            }
+        }
+    );
+    
+		
 	}
 
 	/**

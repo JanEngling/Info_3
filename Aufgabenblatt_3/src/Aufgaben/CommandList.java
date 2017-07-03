@@ -25,31 +25,30 @@ public class CommandList {
 	 * @return True wenn das Element erfolgreich hinzugefügt wurde.
 	 */
 	public boolean add(Command c) {
-		Element pos = new Element(c);
+			Element pos = new Element(c);
 
-		if (root == null) {
-			root = pos; 					// Wurzel auf erstes Element setzten
-			clm.dataChanged();
-			return true;
-		} else {
-			pos.setNext(root); 				// Aktuelle Wurzel dem neuen Element als Next zuweisen
-			root.setPrev(pos); 				// Dem "alten ersten" Element das vorhergehende Element zuweisen
-			root = pos; 					// neuer Listenanfang der Variable root zuweisen
-			clm.dataChanged();
-			return true;
-		}
+			if (root == null) {
+				root = pos; 					// Wurzel auf erstes Element setzten
+				clm.dataChanged();
+				return true;
+			} else {
+				pos.setNext(root); 				// Aktuelle Wurzel dem neuen Element als Next zuweisen
+				root.setPrev(pos); 				// Dem "alten ersten" Element das vorhergehende Element zuweisen
+				root = pos; 					// neuer Listenanfang der Variable root zuweisen
+				clm.dataChanged();
+				return true;
+			}		
 	}
+	
 	
 	public void print(){
 		Element aktPos = root;
-
-		for (int i = groeße(root); i != 0; i--) {
-			
-			System.out.println(aktPos.getElement().toString());
-			
+		for (int i = groeße(root); i != 0; i--) {	
+			System.out.println(aktPos.getElement().toString());	
 			aktPos = aktPos.getNext();
 		}
 	}
+	
 	/**
 	 * Mit der Methode groeße kann die Laenge der Liste bestimmt werden.
 	 * 
@@ -126,6 +125,23 @@ public class CommandList {
 				}
 			}
 			aktPos = aktPos.getNext();
+		}
+		return false;
+	}
+	
+	/**
+	 * Mit der Methode remove kann ein Element an einer bestimmten Position
+	 * gelöscht werden.
+	 * 
+	 * @return True, wenn die Liste erfolgreich gelöscht wurde, false wenn
+	 *         nicht. 
+	 */
+	public boolean deleteList(){
+		Element aktPos = root;
+		
+		if(groeße(root) != 1){
+			root = null;
+			return true;
 		}
 		return false;
 	}

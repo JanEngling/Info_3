@@ -20,6 +20,8 @@ public class ControlModel implements IComListener {
 	private static ControlModel instance = null;
 	private String[] commandTypes = new String[4];
 	private CommandListModel clm = new CommandListModel();
+	
+	//private CommandType [] commandTypes; 
 	private CommandList controlProcess = new CommandList(clm);
 
 	/**
@@ -41,7 +43,31 @@ public class ControlModel implements IComListener {
 		} else
 			return instance;
 	}
+	
+	/*
 
+	public CommandType[] getCommandTypes() {
+		commandTypes[0] = new CommandType("Direction");
+		commandTypes[1] = new CommandType("Gear");
+		commandTypes[2] = new CommandType("Repetition");
+		commandTypes[3] = new CommandType("Pause");
+		return commandTypes;
+	}
+
+	/**
+	 * Befüllt erste Liste bzw. Array mit allen möglichen CommandType Objekten
+	 * (4)
+	 */
+/*
+	public void createCommandTypes() {
+		commandTypes[0] = new CommandType("Direction");
+		commandTypes[1] = new CommandType("Gear");
+		commandTypes[2] = new CommandType("Repetition");
+		commandTypes[3] = new CommandType("Pause");
+	}
+	*/
+	
+	
 	public String[] getCommandTypes() {
 		commandTypes[0] = new String("Direction");
 		commandTypes[1] = new String("Gear");

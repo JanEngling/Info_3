@@ -11,8 +11,7 @@ public class CommandListModel extends AbstractTableModel {
 
 	@Override
 	public void addTableModelListener(TableModelListener l) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}	
 
 	@Override
@@ -51,9 +50,8 @@ public class CommandListModel extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub
-		// Temp Variable das man nicht immer alles Ausschreiben muss
 		
-		System.out.println(rowIndex);
+		// Temp Variable das man nicht immer alles Ausschreiben muss
 		Command temp = ControlModel.getInstance().getControlProcess().get(rowIndex);
 		
 		switch (columnIndex){
@@ -90,7 +88,6 @@ public class CommandListModel extends AbstractTableModel {
 	public void dataChanged (){
 		System.out.println("Aufruf Data Changed");
 		fireTableDataChanged();
-		ControlModel.getInstance().getControlProcess().print();
 	}
 	
 	public void setTable(JTable table){

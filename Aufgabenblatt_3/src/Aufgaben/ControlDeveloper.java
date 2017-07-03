@@ -20,7 +20,7 @@ import hsrt.mec.controldeveloper.io.TextFile;
  */
 public class ControlDeveloper {
 	private static String name = "Control Developer";
-	private static File myFile = new File(System.getProperty("user.dir") + "\\meine_datei.txt");
+	public static File myFile = new File(System.getProperty("user.dir") + "\\meine_datei.txt");
 
 	/**
 	 * @return Gibt den Namen des ControlDevelopers zurück
@@ -50,6 +50,8 @@ public class ControlDeveloper {
 	
 		c.getControlProcess().add(new Direction(4));
 		c.getControlProcess().add(new Pause(4));
+		
+		/*
 
 		c.save(myFile);
 		for (int i = 0; c.getControlProcess().get(i) != null; i++) {
@@ -59,6 +61,9 @@ public class ControlDeveloper {
 		for (int i = 0; c.getControlProcess().get(i) != null; i++) {
 			System.out.println(c.getControlProcess().get(i).toString());
 		}
+		
+		*/
+		
 		//neu Jan
 		/*
 		ComPortHandler cph = new ComPortHandler();
