@@ -1,0 +1,34 @@
+package Aufgaben;
+
+import java.awt.Color;
+
+import javax.swing.JPanel;
+import javax.swing.JTable;
+
+public class ViewEast extends JPanel{
+	private ControlModel c;
+	private static ViewEast instance = null;
+	private JTable table;
+	
+	
+	
+	
+	public ViewEast() {
+		this.c = ControlModel.getInstance();
+		
+		setBackground(Color.BLACK);
+	}
+	/**
+	 * Erzeugt ein Objekt von ConrolModel, wenn noch keins vorhanden ist.
+	 * 
+	 * @return Gibt genau eine Instanz von ControlModel zurück.
+	 */
+
+	public static ViewEast getInstance() {
+		if (instance == null) {
+			instance = new ViewEast();
+			return instance;
+		} else
+			return instance;
+	}
+}

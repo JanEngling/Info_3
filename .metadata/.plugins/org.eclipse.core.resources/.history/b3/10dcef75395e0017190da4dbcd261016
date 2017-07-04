@@ -1,0 +1,28 @@
+package Aufgaben;
+
+import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
+
+public class CommandTypeModel extends AbstractTableModel{
+	private String[] titles = new String[]{"Types"}
+	private JTable table;
+	
+	@Override
+	public int getColumnCount() {
+		// TODO Auto-generated method stub
+		return titles.length;
+	}
+
+	@Override
+	public int getRowCount() {
+		// TODO Auto-generated method stub
+		return ControlModel.getInstance().getControlProcess().groeﬂe();
+	}
+
+	@Override
+	public Object getValueAt(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+ 
+}

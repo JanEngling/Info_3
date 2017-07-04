@@ -24,12 +24,12 @@ public class MainWindow extends JFrame {
 	private GridBagConstraints south = new GridBagConstraints();
 
 	private ViewMiddle vm = new ViewMiddle();
-	// private ViewWest vw = new ViewWest();
-	private ViewEast ve = new ViewEast();
-	private ViewSouth vs = new ViewSouth();
-
+	//private ViewEast ve = new ViewEast();
+	ViewEast ve = ViewEast.getInstance();
+	ViewSouth vs = ViewSouth.getInstance();
+	ViewWest vw = ViewWest.getInstance();	
 	ControlModel cm = ControlModel.getInstance();
-	ViewWest vw = ViewWest.getInstance();
+
 	JMenuBar mb = MenuBar.getInstance();
 
 	public void mainWindow() {
@@ -98,7 +98,7 @@ public class MainWindow extends JFrame {
 		
 		// linkes fesnter jinzufügen
 		// ViewWest vw = new ViewWest();
-		// gui.pack();//minimieren
+		gui.pack();//minimieren
 		// Fenster sichtbar machen
 		gui.setVisible(true);
 

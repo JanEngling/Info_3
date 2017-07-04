@@ -1,0 +1,90 @@
+package Aufgaben;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+public class ViewEast extends JPanel{
+	private ControlModel c;
+	private static ViewEast instance = null;
+	private JTable table;
+	
+	
+	
+	
+	public ViewEast() {
+		this.setLayout(new BorderLayout());
+		JButton b = new JButton("Test");
+		this.add(b, BorderLayout.NORTH);
+		
+		this.c = ControlModel.getInstance();
+		//String[] parts = c.getControlProcess().get(c.getClm().getSelectedRow()).toString().split(":");
+		String st = new String("Direction:4.0");
+		String[] parts = st.split(":");
+		String[] werte = parts[1].split(".");
+		//System.out.println(parts[0]);
+		String[][] str = new String[][]{{"Richtung:", "Wert"}};
+		String[] tmp = new String[]{};
+		table=new JTable(str, tmp);
+		add(new JScrollPane(table), BorderLayout.SOUTH);
+		b.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent a) {
+				//System.out.println(c.getControlProcess().get(c.getClm().getSelectedRow()).toString());
+				String[] parts = c.getControlProcess().get(c.getClm().getSelectedRow()).toString().split(":");
+				String[] werte = parts[1].split(".");
+				//System.out.println(parts[0]);
+				String[][] str = new String[][]{{"Richtung:", werte[0]}};
+				String[] tmp = new String[]{""};
+				table=new JTable(str, tmp);
+				add(new JScrollPane(table), BorderLayout.SOUTH);
+				
+				switch (parts[0]) {
+				case "Direction": /// 0 zeilenende !!!!
+					/*String[][] str = new String[][]{{"Richtung:", werte[0]}};
+					String[] tmp = new String[]{""};
+					table=new JTable(str, tmp);
+					add(new JScrollPane(table), BorderLayout.SOUTH);
+					*/
+					//fireTableDataChanged();
+					break;
+				case "Gear":
+					//controlProcess.add(new Gear(Integer.valueOf(parts[1]), Double.valueOf(parts[2])));
+					break;
+				case "Pause":
+					//controlProcess.add(new Pause(Double.valueOf(parts[1])));
+					break;
+				case "Repetition":
+					//controlProcess.add(new Repetition(Integer.valueOf(parts[1]), Integer.valueOf(parts[2])));
+					break;
+				default:
+					System.out.println("Fehler");
+					break;
+				}
+				//System.out.println("Tada");
+				//System.out.println(table.getSelectedRow());
+				//txt.setText(st[table.getSelectedRow()].toString());
+				//cm.getControlProcess().add(new CommandType(st[l.getSelectedIndex()].toString()).createInstance());
+			}
+		});
+		//setBackground(Color.BLACK);
+	}
+	/**
+	 * Erzeugt ein Objekt von ConrolModel, wenn noch keins vorhanden ist.
+	 * 
+	 * @return Gibt genau eine Instanz von ControlModel zurück.
+	 */
+
+	public static ViewEast getInstance() {
+		if (instance == null) {
+			instance = new ViewEast();
+			return instance;
+		} else
+			return instance;
+	}
+}

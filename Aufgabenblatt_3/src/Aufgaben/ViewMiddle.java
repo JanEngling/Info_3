@@ -25,7 +25,7 @@ public class ViewMiddle extends JPanel{
         this.table = new JTable(c.getClm());
         this.add(new JScrollPane(table),BorderLayout.CENTER);
         
-        table.setDefaultRenderer(Object.class, new MyTableCellRenderer( ));
+        //table.setDefaultRenderer(Object.class, new MyTableCellRenderer( ));
         
         table.setRowHeight(30);
         

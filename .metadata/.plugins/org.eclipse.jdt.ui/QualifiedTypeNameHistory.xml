@@ -3,7 +3,6 @@
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="hsrt.mec.controldeveloper.io.IOType"/>
 <fullyQualifiedTypeName name="hsrt.mec.controldeveloper.io.TextFile"/>
-<fullyQualifiedTypeName name="java.util.Vector"/>
 <fullyQualifiedTypeName name="hsrt.mec.controldeveloper.io.SerialUSB"/>
 <fullyQualifiedTypeName name="hsrt.mec.controldeveloper.core.com.ComPortHandler"/>
 <fullyQualifiedTypeName name="hsrt.mec.controldeveloper.core.com.IComListener"/>
@@ -11,8 +10,14 @@
 <fullyQualifiedTypeName name="hsrt.mec.controldeveloper.core.com.ComHandler"/>
 <fullyQualifiedTypeName name="hsrt.mec.controldeveloper.core.com.command.ICommand"/>
 <fullyQualifiedTypeName name="java.awt.GridBagConstraints"/>
-<fullyQualifiedTypeName name="javax.swing.JButton"/>
 <fullyQualifiedTypeName name="javax.swing.JList"/>
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="Aufgaben.CommandType"/>
+<fullyQualifiedTypeName name="javax.swing.JTextArea"/>
+<fullyQualifiedTypeName name="java.util.Vector"/>
+<fullyQualifiedTypeName name="javax.swing.table.AbstractTableModel"/>
+<fullyQualifiedTypeName name="javax.swing.JTable"/>
+<fullyQualifiedTypeName name="javax.swing.JButton"/>
+<fullyQualifiedTypeName name="java.awt.BorderLayout"/>
+<fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
 </qualifiedTypeNameHistroy>
