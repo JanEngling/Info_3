@@ -82,8 +82,15 @@ public class ViewWest extends JPanel {
 			public void actionPerformed(ActionEvent a) {
 				//System.out.println("Tada");
 				System.out.println(table.getSelectedRow());
-				txt.setText(st[table.getSelectedRow()].toString());
-				cm.getControlProcess().add(new CommandType(st[l.getSelectedIndex()].toString()).createInstance());
+				
+			// Wenn kein Element ausgewählt ist gibt getSelectedRow eine -1 zurück
+				if (table.getSelectedRow() != -1 ){
+					// Ausgabe Konsole
+					txt.setText(st[table.getSelectedRow()].toString());
+					// CommandType erstellen und daraus ein bestimmtes Command erzeugen 
+					CommandType ct = new CommandType(st[table.getSelectedRow()].toString());
+					cm.getControlProcess().add(ct.createInstance());
+				}
 			}
 		});
 		

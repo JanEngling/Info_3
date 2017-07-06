@@ -121,6 +121,7 @@ public class CommandList {
 					return true;
 				}else if (vorAktPos == null && nachAktPos == null){
 					root = null;
+					ControlModel.getInstance().getClm().dataChanged();
 					return true;
 				}
 			}

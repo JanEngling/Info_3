@@ -152,4 +152,8 @@ public class ViewEast extends JPanel {
 	public void reset() {
 		this.remove(jcp);
 	}
+	
+	public void updateTableEast(){
+		table.updateUI();
+	}
 }
