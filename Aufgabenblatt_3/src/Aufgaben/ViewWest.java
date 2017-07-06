@@ -58,8 +58,7 @@ public class ViewWest extends JPanel {
 		//String[][0] str1 = cm.getCommandTypes();
 		//String[] str2 = new String[]{"Types"};
 		//this.table=new JTable(str, str2);
-		
-		//Vector<String> v = new Vector<String>();
+		 ;
 		this.add(new JScrollPane(table),BorderLayout.NORTH);
 		
 		/*
@@ -82,7 +81,7 @@ public class ViewWest extends JPanel {
 				//System.out.println("Tada");
 				System.out.println(table.getSelectedRow());
 				txt.setText(st[table.getSelectedRow()].toString());
-				//cm.getControlProcess().add(new CommandType(st[l.getSelectedIndex()].toString()).createInstance());
+				cm.getControlProcess().add(new CommandType(st[l.getSelectedIndex()].toString()).createInstance());
 			}
 		});
 		/*
