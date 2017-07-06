@@ -10,6 +10,7 @@ package Aufgaben;
 import java.io.File;
 import java.util.Vector;
 
+import hsrt.mec.controldeveloper.core.com.ComHandler;
 import hsrt.mec.controldeveloper.core.com.IComListener;
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
 import hsrt.mec.controldeveloper.io.IOType;
@@ -20,14 +21,51 @@ public class ControlModel implements IComListener {
 	private static ControlModel instance = null;
 	private String[] commandTypes = new String[4];
 	private CommandListModel clm = new CommandListModel();
-	
-	//private CommandType [] commandTypes; 
+
+	// private CommandType [] commandTypes;
 	private CommandList controlProcess = new CommandList(clm);
+
+	private ComHandler comHandler = ComHandler.getInstance();
+	private IOType serial;
 
 	/**
 	 * Standartkonstruktor von ControlModel
 	 */
 	private ControlModel() {
+		comHandler.register(this);
+	}
+
+	public void start() {
+		Vector<ICommand> commandlist = new Vector<ICommand>();
+		// commandlist.add(null);
+		for (int i = 0; controlProcess.get(i) != null; i++) {
+			commandlist.addElement(controlProcess.get(i));
+		}
+
+		File myFile = new File("Ausgabe.txt");
+		TextFile textFile = new TextFile(myFile, false);
+		comHandler.start(commandlist, textFile); // alternativ statt textFile
+													// usb
+		// comHandler.start(commandlist, serial);
+	}
+
+	public void stop() {
+		comHandler.stop();
+	}
+
+	/**
+	 * @return the serial
+	 */
+	public IOType getSerial() {
+		return serial;
+	}
+
+	/**
+	 * @param serial
+	 *            the serial to set
+	 */
+	public void setSerial(IOType serial) {
+		this.serial = serial;
 	}
 
 	/**
@@ -43,31 +81,24 @@ public class ControlModel implements IComListener {
 		} else
 			return instance;
 	}
-	
+
 	/*
-
-	public CommandType[] getCommandTypes() {
-		commandTypes[0] = new CommandType("Direction");
-		commandTypes[1] = new CommandType("Gear");
-		commandTypes[2] = new CommandType("Repetition");
-		commandTypes[3] = new CommandType("Pause");
-		return commandTypes;
-	}
-
-	/**
-	 * Befüllt erste Liste bzw. Array mit allen möglichen CommandType Objekten
-	 * (4)
+	 * 
+	 * public CommandType[] getCommandTypes() { commandTypes[0] = new
+	 * CommandType("Direction"); commandTypes[1] = new CommandType("Gear");
+	 * commandTypes[2] = new CommandType("Repetition"); commandTypes[3] = new
+	 * CommandType("Pause"); return commandTypes; }
+	 * 
+	 * /** Befüllt erste Liste bzw. Array mit allen möglichen CommandType
+	 * Objekten (4)
 	 */
-/*
-	public void createCommandTypes() {
-		commandTypes[0] = new CommandType("Direction");
-		commandTypes[1] = new CommandType("Gear");
-		commandTypes[2] = new CommandType("Repetition");
-		commandTypes[3] = new CommandType("Pause");
-	}
-	*/
-	
-	
+	/*
+	 * public void createCommandTypes() { commandTypes[0] = new
+	 * CommandType("Direction"); commandTypes[1] = new CommandType("Gear");
+	 * commandTypes[2] = new CommandType("Repetition"); commandTypes[3] = new
+	 * CommandType("Pause"); }
+	 */
+
 	public String[] getCommandTypes() {
 		commandTypes[0] = new String("Direction");
 		commandTypes[1] = new String("Gear");
@@ -148,15 +179,6 @@ public class ControlModel implements IComListener {
 	}
 
 	/**
-	 * Bekommt ein Objekt vom Typ Command übergeben.
-	 * 
-	 * @param c
-	 *            Command
-	 */
-	public void commandPerformed(Command c) {
-	}
-
-	/**
 	 * Getter-Methode
 	 * 
 	 * @return Gibt die Reference der verketteteten Liste von Typ CommandList
@@ -167,13 +189,14 @@ public class ControlModel implements IComListener {
 	}
 
 	/**
-	 * Methode aus IComListener
+	 * Bekommt ein Objekt vom Typ Command übergeben.
 	 * 
-	 * @param arg0
+	 * @param c
+	 *            Command
+	 * 
 	 */
-	public void commandPerformed(ICommand arg0) {
-		// TODO Auto-generated method stub
-
+	public void commandPerformed(ICommand c) {
+		ViewSouth.getInstance().addText(c.toString());
 	}
 
 	// Grooesse der Liste bestimmen

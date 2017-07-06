@@ -61,7 +61,7 @@ public class ViewWest extends JPanel {
 		//String[] str2 = new String[]{"Types"};
 		//this.table=new JTable(str, str2);
 		 ;
-		this.add(new JScrollPane(table),BorderLayout.NORTH);
+		this.add(new JScrollPane(table),BorderLayout.CENTER);
 		
 		/*
 		l.setListData(cm.getCommandTypes());

@@ -29,6 +29,8 @@ public class MiddleButton extends JPanel implements ActionListener {
 		moveUp.addActionListener(this);
 		moveDown.addActionListener(this);
 		remove.addActionListener(this);
+		start.addActionListener(this);
+		stop.addActionListener(this);
 
 		/*
 		 * remove.addActionListener(new ActionListener(){ public void
@@ -76,6 +78,12 @@ public class MiddleButton extends JPanel implements ActionListener {
 				c.getClm().setSelectedRow(c.getClm().getSelectedRow() + 1);
 		} else if (b == this.remove) {
 			c.getControlProcess().remove(c.getClm().getSelectedRow());
+		} else if(b == this.start){
+			c.start();
+			ViewSouth.getInstance().addText("Ausgabe läuft");
+		} else if (b == this.stop){
+			c.stop();
+			ViewSouth.getInstance().addText("Ausgabe gestoppt");
 		}
 		
 		ViewEast.getInstance().updateTableEast();
