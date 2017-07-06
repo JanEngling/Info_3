@@ -1,0 +1,21 @@
+package Übung2;
+
+public class ButtonModel {
+	private int counterLeft = 0;
+	private int counterRight = 0;
+
+	public void intCounterLeft() {
+		counterLeft++;
+	}
+
+	public void intCounterRight() {
+		counterRight++;
+	}
+	public int getLeftCounter(){
+		return counterLeft;
+	}
+	public int getRightCounter(){
+		return counterRight;
+	}
+
+}

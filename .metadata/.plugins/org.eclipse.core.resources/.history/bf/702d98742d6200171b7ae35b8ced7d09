@@ -1,0 +1,42 @@
+package Aufgaben;
+
+import java.awt.Color;
+
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+public class ViewSouth extends JPanel {
+
+	private ControlModel c;
+	private static JTextArea txtara = new JTextArea(10,20);
+	private static ViewSouth instance = null;
+
+	public ViewSouth() {
+		this.c = ControlModel.getInstance();
+
+		//this.txtara = new JTextArea(10, 20);
+		this.add(txtara);
+		this.setBackground(Color.WHITE);
+
+	}
+	/**
+	 * Erzeugt ein Objekt von ConrolModel, wenn noch keins vorhanden ist.
+	 * 
+	 * @return Gibt genau eine Instanz von ControlModel zurück.
+	 */
+
+	public static ViewSouth getInstance() {
+		if (instance == null) {
+			instance = new ViewSouth();
+			return instance;
+		} else
+			return instance;
+	}
+	public static JTextArea getText() {
+		if (txtara == null) {
+			txtara = new JTextArea(10, 20);
+			return txtara;
+		} else
+			return txtara;
+	}
+}

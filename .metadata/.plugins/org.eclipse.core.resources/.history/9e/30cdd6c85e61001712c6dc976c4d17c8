@@ -1,0 +1,14 @@
+package Übung2_9b;
+
+import javax.swing.JFrame;
+
+public class ButtonTest {
+	public static void main(String[] s) {
+		ButtonModel bM = new ButtonModel();
+		ButtonView bV = new ButtonView(bM);
+
+		bV.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		bV.pack();
+		bV.setVisible(true);
+	}
+}

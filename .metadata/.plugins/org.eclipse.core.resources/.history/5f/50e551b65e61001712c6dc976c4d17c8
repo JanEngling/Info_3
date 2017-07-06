@@ -1,0 +1,58 @@
+package Übung2;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class ButtonView extends JFrame {
+	private ButtonModel bM = null;
+	private JButton bLeft = new JButton("0x gedrückt");
+	private JButton bRight = new JButton("0x gedrückt");
+
+	public class ButtonController implements ActionListener {
+		private ButtonModel bM;
+		private ButtonView bV;
+
+		public ButtonController(ButtonModel bM, ButtonView bV) {
+			this.bM = bM;
+			this.bV = bV;
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			JButton b = (JButton) e.getSource();
+			if (b == bV.getLeftButton())
+				bM.incCounterLeft();
+			else
+				bM.incCounterRight();
+
+			bV.updateText();
+		}
+	}
+
+	public ButtonView(ButtonModel bM) {
+		super("ButtonApplication");
+		this.bM = bM;
+
+		setLayout(new FlowLayout());
+		add(bLeft);
+		add(bRight);
+
+		ButtonController bC = new ButtonController(bM, this);
+		bLeft.addActionListener(bC);
+		bRight.addActionListener(bC);
+
+	}
+
+	public void updateText() {
+		bLeft.setText(bM.getLeftCounter() + "x gedrückt");
+		bRight.setText(bM.getRightCounter() + "x gedrückt");
+
+	}
+
+	public JButton getLeftButton() {
+		return bLeft;
+	}
+}

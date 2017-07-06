@@ -1,0 +1,218 @@
+package Aufgaben;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+public class ViewEast extends JPanel {
+	private ControlModel c;
+	private static ViewEast instance = null;
+	private JTable table; // Direction
+	private JTable table1; // Gear
+	private JTable table2; // Pause
+	private JTable table3; // Repitition
+	private JScrollPane jcp;
+
+	public ViewEast() {
+		this.setLayout(new BorderLayout());
+		JButton b = new JButton("Test");
+		JButton save = new JButton("Save");
+		this.add(b, BorderLayout.NORTH);
+		// this.add(b);
+		this.add(save, BorderLayout.SOUTH);
+
+		this.c = ControlModel.getInstance();
+		// String[] parts =
+		// c.getControlProcess().get(c.getClm().getSelectedRow()).toString().split(":");
+		// String st = new String("Direction:4.0");
+
+		String st = new String("Gear:4:5.0");
+		String[] parts = st.split(":");
+
+		String[][] str = new String[][] { { "", "" } };
+
+		String[] tmp = new String[] {"","" };
+		this.table = new JTable(str, tmp);
+		// add(new JScrollPane(table), BorderLayout.SOUTH);
+		this.jcp = new JScrollPane(table);
+		this.add(jcp);
+
+		ViewMiddle.getInstance().getTable().addMouseListener(new MouseListener() {
+
+			public void mouseClicked(MouseEvent a) {
+				System.out.println(ViewMiddle.getInstance().getTable().getSelectedRow());
+				System.out.println(c.getControlProcess().get(c.getClm().getSelectedRow()).toString());
+				String[] parts = c.getControlProcess().get(c.getClm().getSelectedRow()).toString().split(":");
+
+				Command com = c.getControlProcess().get(c.getClm().getSelectedRow());
+				System.out.println("das ist die ausgabe" + com.getName());
+				// switch (parts[0]) {
+				switch (com.getName()) {
+
+				case "Direction": /// 0 zeilenende !!!!
+					// table.setVisible(true);
+					ViewEast.getInstance().reset();
+					String[][] str = new String[][] { { "Winkel:", parts[1] } };
+					String[] tmp = new String[] { "", "" };
+					table = new JTable(str, tmp);
+					jcp = new JScrollPane(table);
+					ViewEast.getInstance().add(jcp);
+
+					ViewEast.getInstance().setVisible();
+					System.out.println("bin ich hier");
+					break;
+				case "Gear":
+					ViewEast.getInstance().reset();
+					String[][] str1 = new String[][] { { "Geschwindigkeit:", parts[1] }, { "Dauer:", parts[2] } };
+					String[] tmp1 = new String[] { "", "" };
+					table = new JTable(str1, tmp1);
+					jcp = new JScrollPane(table);
+					ViewEast.getInstance().add(jcp);
+
+					ViewEast.getInstance().setVisible();
+					// controlProcess.add(new Gear(Integer.valueOf(parts[1]),
+					// Double.valueOf(parts[2]))); break;
+				case "Pause":
+					ViewEast.getInstance().reset();
+
+					// table2.setVisible(true); // controlProcess.add(new
+					String[][] str2 = new String[][] { { "Dauer:", parts[1] } };
+					String[] tmp2 = new String[] { "", "" };
+					table = new JTable(str2, tmp2);
+					jcp = new JScrollPane(table);
+					ViewEast.getInstance().add(jcp);
+
+					ViewEast.getInstance().setVisible();
+					break;
+				// Pause(Double.valueOf(parts[1]))); break;
+				case "Repetition":
+					ViewEast.getInstance().reset();
+
+					String[][] str3 = new String[][] { { "Anzahl Schritte", parts[1] },
+							{ "Wiederholungen", parts[2] } };
+					String[] tmp3 = new String[] { "", "" };
+					table = new JTable(str3, tmp3);
+					jcp = new JScrollPane(table);
+					ViewEast.getInstance().add(jcp);
+
+					ViewEast.getInstance().setVisible();
+					// Repetition(Integer.valueOf(parts[1]),
+					// Integer.valueOf(parts[2]))); break;
+				default:
+					System.out.println("Fehler");
+					break;
+				}
+
+			}
+
+			public void mouseEntered(MouseEvent arg0) {
+			}
+
+			public void mouseExited(MouseEvent arg0) {
+			}
+
+			public void mousePressed(MouseEvent arg0) {
+			}
+
+			public void mouseReleased(MouseEvent arg0) {
+			}
+
+		});
+		// this.remove(jcp);
+		// System.out.println(werte[0]);
+		// System.out.println("Hier" + Integer.valueOf(werte[0]));
+		//
+		/*
+		 * /* String[][] str1 = new String[][]{{"Geschwindigkeit",
+		 * "dfd"},{"Dauer", ""}}; String[] tmp1 = new String[]{"",""};
+		 * this.table1=new JTable(str1, tmp1);
+		 * 
+		 * add(new JScrollPane(table1), BorderLayout.CENTER); add(new
+		 * JScrollPane(table2), BorderLayout.CENTER); add(new
+		 * JScrollPane(table3), BorderLayout.CENTER); table1.setVisible(true);
+		 * table2.setVisible(true); table3.setVisible(true);
+		 */
+		save.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				table.getValueAt(1, 1); // holt geänderten wert
+				// c.getControlProcess().get() =new Direction();
+				// (Direction)c.getControlProcess().get(1);
+			}
+		});
+
+		b.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent a) {
+				// System.out.println(c.getControlProcess().get(c.getClm().getSelectedRow()).toString());
+				// String[] parts =
+				// c.getControlProcess().get(c.getClm().getSelectedRow()).toString().split(":");
+				// String[] werte = parts[1].split(".");
+				// System.out.println(parts[0]);
+				// table.setVisible(false);
+				ViewEast.getInstance().reset();
+				String[][] str5 = new String[][] { { "Richtung:", "dddd" } };
+				String[] tmp5 = new String[] { "", "" };
+				table1 = new JTable(str5, tmp5);
+				jcp = new JScrollPane(table1);
+				System.out.println("hier war ich auch");
+				// ViewEast.getInstance().remove(table);
+				// ViewEast.getInstance().remove(table);
+				ViewEast.getInstance().add(jcp);
+				// ViewEast.getInstance().setVisibletable();
+				// ViewEast.getInstance().add(new JScrollPane(table1));
+				ViewEast.getInstance().setVisible(false);
+				ViewEast.getInstance().setVisible(true);
+
+				// System.out.println("hier" +c.getClm().getSelectedRow());
+
+				/*
+				 * String[][] str = new String[][]{{"Richtung:", werte[0]}};
+				 * String[] tmp = new String[]{""}; table=new JTable(str, tmp);
+				 * add(new JScrollPane(table), BorderLayout.SOUTH);
+				 */
+				// fireTableDataChanged();
+
+				// System.out.println("Tada");
+				// System.out.println(table.getSelectedRow());
+				// txt.setText(st[table.getSelectedRow()].toString());
+				// cm.getControlProcess().add(new
+				// CommandType(st[l.getSelectedIndex()].toString()).createInstance());
+
+			}
+		});
+		// setBackground(Color.BLACK);
+	}
+
+	/**
+	 * Erzeugt ein Objekt von ConrolModel, wenn noch keins vorhanden ist.
+	 * 
+	 * @return Gibt genau eine Instanz von ControlModel zurück.
+	 */
+
+	public static ViewEast getInstance() {
+		if (instance == null) {
+			instance = new ViewEast();
+			return instance;
+		} else
+			return instance;
+	}
+
+	public void setVisible() {
+		System.out.println("hier auch?");
+		ViewEast.getInstance().setVisible(false);
+		ViewEast.getInstance().setVisible(true);
+	}
+
+	public void reset() {
+		System.out.println("test");
+		this.remove(jcp);
+	}
+}

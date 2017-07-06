@@ -85,8 +85,10 @@ public class CommandListModel extends AbstractTableModel {
 		
 	}
 	
-	public void dataChanged (){
+	public void dataChanged (){	//hier repaint
 		System.out.println("Aufruf Data Changed");
+		ViewMiddle.getInstance().setVisible();
+		ViewMiddle.getInstance().resetTableview();
 		fireTableDataChanged();
 	}
 	

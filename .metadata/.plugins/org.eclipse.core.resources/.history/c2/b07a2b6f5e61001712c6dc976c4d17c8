@@ -1,0 +1,26 @@
+package Übung2;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+
+public class ButtonController implements ActionListener {
+	private ButtonModel bM;
+	private ButtonView bV;
+
+	public ButtonController(ButtonModel bM, ButtonView bV) {
+		this.bM = bM;
+		this.bV= bV;
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		JButton b = (JButton) e.getSource();
+		if (b == bV.getLeftButton())
+			bM.incCounterLeft();
+		else
+			bM.incCounterRight();
+
+		bV.updateText();
+	}
+}

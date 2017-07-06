@@ -7,6 +7,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import hsrt.mec.controldeveloper.core.com.ComPort;
+import hsrt.mec.controldeveloper.core.com.ComPortHandler;
+import hsrt.mec.controldeveloper.io.SerialUSB;
+
 public class MenuBar extends JMenuBar{
 	private ControlModel cm;
 	
@@ -18,7 +22,20 @@ public class MenuBar extends JMenuBar{
 	private JMenuItem load = new JMenuItem("Datei laden");
 	private JMenuItem save = new JMenuItem("Datei speichern");
 	private JMenuItem delete = new JMenuItem("Liste löschen");
-	
+	ComPortHandler cph = new ComPortHandler();
+	ComPort[] cp = new ComPort[10];
+	//neu Jan
+			/*
+			
+			
+				//setzt usb port mit bestimmter id
+			Vector<ICommand> commandlist = new Vector<ICommand>();
+			commandlist.add(null);
+			TextFile textFile = new TextFile(myFile, false);
+			ch.start(commandlist, textFile);	//alternativ statt textFile usb
+			ch.stop();
+			*/
+			//Ende neu Jan
 
 	public MenuBar () {
 		this.cm = ControlModel.getInstance();
@@ -29,10 +46,19 @@ public class MenuBar extends JMenuBar{
 		file.add(delete);
 		
 		this.add(port);
-		
+		cp = ComPortHandler.getPorts();//Liefert alle verfügbaren ports zurück
+		//System.out.println(cp[0].getName());
+		for (int i =0; i < cp.length; i++){
+			port.add(cp[i].getName());
+			System.out.println("hier auch");
+		}
+		System.out.println("hier war ich");
+		System.out.println(cp.length);
 		this.add(info);
 		
-
+		//cp[1].getId();	//liefert ID des ersten USB ports
+		//SerialUSB usb = new SerialUSB(cp[1]);
+		
 		// MenuItem TextDatei laden
 		load.addActionListener(new ActionListener(){
 	                public void actionPerformed(ActionEvent e){
