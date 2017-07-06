@@ -177,7 +177,7 @@ public class CommandList {
 	 */
 	public boolean moveUp(int pos) {
 		Element aktPos = root;
-
+		
 		for (int i = groeﬂe(root); i != 0; i--) { 				// i wird auf Counter gesetzt und es wird runtergez‰hlt(so arbeitet auch die Liste)
 			if (i == pos + 1) {
 				Element nachAktPos = aktPos.getNext(); 			// Adresse vom folgenden Element zugreifen

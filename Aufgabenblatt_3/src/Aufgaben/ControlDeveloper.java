@@ -50,6 +50,8 @@ public class ControlDeveloper {
 	
 		c.getControlProcess().add(new Direction(4));
 		c.getControlProcess().add(new Pause(4));
+		c.getControlProcess().add(new Gear(4,5));
+		c.getControlProcess().add(new Repetition(3,5));
 		
 		/*
 

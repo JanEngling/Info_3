@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -85,6 +87,7 @@ public class ViewWest extends JPanel {
 				//cm.getControlProcess().add(new CommandType(st[l.getSelectedIndex()].toString()).createInstance());
 			}
 		});
+		
 		/*
 		l.addListSelectionListener(new ListSelectionListener() {// ActionListener
 			public void valueChanged(ListSelectionEvent e) {
@@ -106,7 +109,7 @@ public class ViewWest extends JPanel {
 	 * 
 	 * @return Gibt genau eine Instanz von ControlModel zurück.
 	 */
-
+	
 	public static ViewWest getInstance() {
 		if (instance == null) {
 			instance = new ViewWest();
@@ -117,29 +120,3 @@ public class ViewWest extends JPanel {
 
 }
 
-/*
- * package hsrt.mec.mvc;
- * 
- * import javax.swing.JFrame; import javax.swing.JButton; import
- * javax.swing.JTextField; import java.awt.BorderLayout;
- * 
- * class LottoView extends JFrame{ private JTextField in = new JTextField(20);
- * private JButton b = new JButton("Save"); private JTextField out= new
- * JTextField(30); private LottoModel lM;
- * 
- * public LottoView (LottoModel lM){ super("Lottotipp");
- * 
- * this.lM= lM; out.setEditable(false); b.addActionListener(new
- * LottoController(this, lM));
- * 
- * add(in, BorderLayout.WEST); add(b, BorderLayout.CENTER); add(out,
- * BorderLayout.SOUTH); }
- * 
- * public void update(){ // 4. update mit neuen daten out.setText(lM.getTipp());
- * in.setText(""); }
- * 
- * public String getText(){ return in.getText(); }
- * 
- * 
- * }
- */

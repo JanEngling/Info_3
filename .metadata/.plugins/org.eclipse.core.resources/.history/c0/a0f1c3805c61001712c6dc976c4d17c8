@@ -1,0 +1,16 @@
+package Übung2;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ButtonController implements ActionListener {
+	private ButtonModel bM;
+	
+	public ButtonController(ButtonModel bM){
+		this.bM=bM;
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+
+	}
+}

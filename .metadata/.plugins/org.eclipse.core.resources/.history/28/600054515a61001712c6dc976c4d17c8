@@ -1,0 +1,22 @@
+package Übung2;
+
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class ButtonView extends JFrame{
+	private ButtonModel bM = null;
+	private JButton bLeft =new JButton("");
+	private JButton bRight = new JButton("");
+	
+	public ButtonView(ButtonModel bM){
+		super("ButtonApplication");
+		this.bM=bM;
+		
+		setLayout(new FlowLayout());
+		add(bLeft);
+		add(bRight);
+		
+	}
+}
