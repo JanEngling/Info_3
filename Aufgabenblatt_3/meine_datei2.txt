@@ -1,0 +1,10 @@
+Gear:0:0.0
+Gear:0:0.0
+Gear:0:0.0
+Gear:0:0.0
+Gear:0:0.0
+Gear:0:0.0
+Direction:4
+Pause:4.0
+Gear:4:5.0
+Ende

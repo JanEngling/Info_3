@@ -31,7 +31,7 @@ public class ViewWest extends JPanel {
 	ControlModel cm = ControlModel.getInstance();
 	String[] st = cm.getCommandTypes();
 	JTextArea txt = ViewSouth.getText();
-
+	
 	/**
 	 * Konstruktor der linken Tabelle
 	 */
@@ -49,7 +49,13 @@ public class ViewWest extends JPanel {
 
 		Vector<String> namen = new Vector<String>();
 		namen.add("Types");
-		this.table = new JTable(rowdata, namen);
+		this.table = new JTable(rowdata, namen){
+			public boolean isCellEditable(int row, int col){
+				return false;
+			}
+		};
+		
+		
 		this.add(new JScrollPane(table), BorderLayout.CENTER);
 
 		this.add(b, BorderLayout.SOUTH);
@@ -59,7 +65,6 @@ public class ViewWest extends JPanel {
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent a) {
 				System.out.println(table.getSelectedRow());
-
 				// Wenn kein Element ausgewählt ist gibt getSelectedRow eine -1
 				// zurück
 				if (table.getSelectedRow() != -1) {

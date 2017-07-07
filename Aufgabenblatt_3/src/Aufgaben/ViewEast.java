@@ -38,7 +38,15 @@ public class ViewEast extends JPanel {
 		this.c = ControlModel.getInstance();
 
 		String[][] str = new String[][] {};
-		this.table = new JTable(str, tmp);
+		this.table = new JTable(str, tmp) {
+			public boolean isCellEditable(int row, int col) {
+				if (col == 0)
+					return false;
+				else
+					return true;
+			}
+
+		};
 		this.jcp = new JScrollPane(table);
 		this.add(jcp);
 
@@ -79,25 +87,70 @@ public class ViewEast extends JPanel {
 		save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Command com = c.getControlProcess().get(c.getClm().getSelectedRow());
-
+				if (com == null) {
+					System.out.println("kein Commando gewählt");
+					return;
+				}
+				
 				switch (com.getName()) {
 				case "Direction":
+					try {
+						Integer.parseInt(table.getValueAt(0, 1).toString());
+					} catch (NumberFormatException es) {
+						System.out.println("Nicht cheaten!");
+						return;
+					}
+					if (Integer.valueOf((String) table.getValueAt(0, 1))<0){
+						System.out.println("keine werte kleiner null");
+						return;
+					}
 					((Direction) com).setDegree(Integer.valueOf((String) table.getValueAt(0, 1)));
 					table.setRowHeight(25);
 					ViewMiddle.getInstance().setVisible();
 					break;
 				case "Gear":
+					try {
+						Integer.parseInt(table.getValueAt(0, 1).toString());
+						Double.parseDouble(table.getValueAt(1, 1).toString());
+					} catch (NumberFormatException es) {
+						System.out.println("Nicht cheaten!");
+						return;
+					}if (Integer.valueOf((String) table.getValueAt(0, 1))<0||Double.valueOf((String) table.getValueAt(1, 1))<0){
+						System.out.println("keine werte kleiner null");
+						return;
+					}
 					((Gear) com).setSpeed(Integer.valueOf((String) table.getValueAt(0, 1)));
 					((Gear) com).setDuration(Double.valueOf((String) table.getValueAt(1, 1)));
 					table.setRowHeight(25);
 					ViewMiddle.getInstance().setVisible();
 					break;
 				case "Pause":
+					try {
+						Double.parseDouble(table.getValueAt(0, 1).toString());
+					} catch (NumberFormatException es) {
+						System.out.println("Nicht cheaten!");
+						return;
+					}
+					if (Double.valueOf((String) table.getValueAt(0, 1))<0){
+						System.out.println("keine werte kleiner null");
+						return;
+					}
 					((Pause) com).setDuration(Double.valueOf((String) table.getValueAt(0, 1)));
 					table.setRowHeight(25);
 					ViewMiddle.getInstance().setVisible();
 					break;
 				case "Repetition":
+					try {
+						Integer.parseInt(table.getValueAt(0, 1).toString());
+						Integer.parseInt(table.getValueAt(1, 1).toString());
+					} catch (NumberFormatException es) {
+						System.out.println("Nicht cheaten!");
+						return;
+					}
+					if (Integer.valueOf((String) table.getValueAt(0, 1))<0||Integer.valueOf((String) table.getValueAt(1, 1))<0){
+						System.out.println("keine werte kleiner null");
+						return;
+					}
 					((Repetition) com).setNrSteps(Integer.valueOf((String) table.getValueAt(0, 1)));
 					((Repetition) com).setNrRepetitions(Integer.valueOf((String) table.getValueAt(1, 1)));
 					table.setRowHeight(25);
@@ -155,7 +208,15 @@ public class ViewEast extends JPanel {
 			ViewEast.getInstance().reset();
 
 			String[][] str = new String[][] {};
-			table = new JTable(str, tmp);
+			table = new JTable(str, tmp) {
+				public boolean isCellEditable(int row, int col) {
+					if (col == 0)
+						return false;
+					else
+						return true;
+				}
+
+			};
 			jcp = new JScrollPane(table);
 			ViewEast.getInstance().add(jcp);
 			table.setRowHeight(25);
@@ -165,7 +226,15 @@ public class ViewEast extends JPanel {
 			case "Direction":
 				ViewEast.getInstance().reset();
 				String[][] str = new String[][] { { "Winkel:", String.valueOf(((Direction) com).getDegree()) } };
-				table = new JTable(str, tmp);
+				table = new JTable(str, tmp) {
+					public boolean isCellEditable(int row, int col) {
+						if (col == 0)
+							return false;
+						else
+							return true;
+					}
+
+				};
 				jcp = new JScrollPane(table);
 				ViewEast.getInstance().add(jcp);
 				table.setRowHeight(25);
@@ -176,7 +245,15 @@ public class ViewEast extends JPanel {
 				ViewEast.getInstance().reset();
 				String[][] str1 = new String[][] { { "Geschwindigkeit:", String.valueOf(((Gear) com).getSpeed()) },
 						{ "Dauer:", String.valueOf(((Gear) com).getDuration()) } };
-				table = new JTable(str1, tmp);
+				table = new JTable(str1, tmp) {
+					public boolean isCellEditable(int row, int col) {
+						if (col == 0)
+							return false;
+						else
+							return true;
+					}
+
+				};
 				jcp = new JScrollPane(table);
 				ViewEast.getInstance().add(jcp);
 				table.setRowHeight(25);
@@ -185,7 +262,15 @@ public class ViewEast extends JPanel {
 			case "Pause":
 				ViewEast.getInstance().reset();
 				String[][] str2 = new String[][] { { "Dauer:", String.valueOf(((Pause) com).getDuration()) } };
-				table = new JTable(str2, tmp);
+				table = new JTable(str2, tmp) {
+					public boolean isCellEditable(int row, int col) {
+						if (col == 0)
+							return false;
+						else
+							return true;
+					}
+
+				};
 				jcp = new JScrollPane(table);
 				ViewEast.getInstance().add(jcp);
 				table.setRowHeight(25);
@@ -196,7 +281,15 @@ public class ViewEast extends JPanel {
 				String[][] str3 = new String[][] {
 						{ "Anzahl Schritte", String.valueOf(((Repetition) com).getNrSteps()) },
 						{ "Wiederholungen", String.valueOf(((Repetition) com).getNrRepetitions()) } };
-				table = new JTable(str3, tmp);
+				table = new JTable(str3, tmp) {
+					public boolean isCellEditable(int row, int col) {
+						if (col == 0)
+							return false;
+						else
+							return true;
+					}
+
+				};
 				jcp = new JScrollPane(table);
 				ViewEast.getInstance().add(jcp);
 				table.setRowHeight(25);

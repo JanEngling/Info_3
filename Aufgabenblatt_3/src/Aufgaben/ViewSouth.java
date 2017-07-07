@@ -1,5 +1,6 @@
 package Aufgaben;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JPanel;
@@ -18,17 +19,21 @@ public class ViewSouth extends JPanel {
 	private static JTextArea txtara = new JTextArea(10, 20);
 	private JScrollPane scroll = new JScrollPane(txtara);
 	private static ViewSouth instance = null;
-
+	
 	/**
 	 * KOnstruktor des unteren Fensters
 	 */
 	public ViewSouth() {
 		this.c = ControlModel.getInstance();
-
+		this.setLayout(new BorderLayout());
 		// this.txtara = new JTextArea(10, 20);
-		this.add(txtara);
+		
+		this.add(txtara, BorderLayout.WEST);
 		this.setBackground(Color.WHITE);
-
+		
+		this.scroll.getVerticalScrollBar().setValue(this.scroll.getVerticalScrollBar().getMaximum());
+		
+		
 	}
 
 	/**

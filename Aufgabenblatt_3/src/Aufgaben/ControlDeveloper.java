@@ -1,7 +1,12 @@
 package Aufgaben;
 
+import java.awt.Font;
 import java.io.File;
+import java.util.Enumeration;
 import java.util.Vector;
+
+import javax.swing.UIManager;
+import javax.swing.plaf.FontUIResource;
 
 import hsrt.mec.controldeveloper.core.com.ComHandler;
 import hsrt.mec.controldeveloper.core.com.ComPort;
@@ -46,6 +51,7 @@ public class ControlDeveloper {
 	public static void main(String[] s) {
 		ControlModel c = ControlModel.getInstance();
 		ComHandler ch = ComHandler.getInstance();
+		setFontSize(25);
 		MainWindow gui = new MainWindow();
 	
 		c.getControlProcess().add(new Direction(4));
@@ -55,6 +61,21 @@ public class ControlDeveloper {
 		
 		//GUI
 		gui.mainWindow();
+		
 	}
-
+	  public static void setFontSize(int size){
+		    Enumeration<Object> keys = UIManager.getDefaults().keys();
+		    
+		    while (keys.hasMoreElements()) {
+		      Object key   = keys.nextElement();
+		      Object value = UIManager.get(key);
+		      
+		      if (value!=null && value instanceof FontUIResource){
+		        Font font = UIManager.getLookAndFeelDefaults().getFont(key);
+		        font = new Font(font.getName(), font.getStyle(), size);
+		        
+		        UIManager.getLookAndFeelDefaults().put(key, font);
+		      }
+		    }
+		  }
 }

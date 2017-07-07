@@ -52,6 +52,8 @@ public class ControlModel implements IComListener {
 		File myFile = new File("Ausgabe.txt");
 		TextFile textFile = new TextFile(myFile, false);
 		comHandler.start(commandlist, textFile); // alternativ statt textFile
+		comHandler.start(commandList, ioType)
+
 	}
 
 	/**
