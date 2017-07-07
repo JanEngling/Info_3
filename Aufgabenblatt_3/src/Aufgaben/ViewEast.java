@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -13,76 +15,51 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+/**
+ * östliches Fenster mit Eingabe der änderbaren Command Parameter
+ * 
+ * @author Andreas & Jan
+ * @version 1.0
+ */
 public class ViewEast extends JPanel {
 	private ControlModel c;
 	private static ViewEast instance = null;
 	private JTable table;
-	private JTable table1;
 	private JScrollPane jcp;
+	private String[] tmp = new String[] { "Paramteter", "Wert" };
 
+	/**
+	 * Konstruktor der rechten Tabelle
+	 */
 	public ViewEast() {
 		this.setLayout(new BorderLayout());
 		JButton save = new JButton("Save");
 		this.add(save, BorderLayout.SOUTH);
 		this.c = ControlModel.getInstance();
 
-		String[][] str = new String[][] { { "", "" } };
-		String[] tmp = new String[] {  };
-		this.table1 = new JTable(str, tmp);
-		this.jcp = new JScrollPane(table1);
+		String[][] str = new String[][] {};
+		this.table = new JTable(str, tmp);
+		this.jcp = new JScrollPane(table);
 		this.add(jcp);
 
+		// KeyLsitener um Pfeiltastenbewegung zu registrieren
+		ViewMiddle.getInstance().getTable().addKeyListener(new KeyListener() {
+			public void keyPressed(KeyEvent arg0) {
+				ViewEast.getInstance().changed();
+			}
+
+			public void keyReleased(KeyEvent e) {
+			}
+
+			public void keyTyped(KeyEvent e) {
+			}
+
+		});
+		// MouseListener um markierte Reihe zu bekommen
 		ViewMiddle.getInstance().getTable().addMouseListener(new MouseListener() {
 
 			public void mouseClicked(MouseEvent a) {
-				Command com = c.getControlProcess().get(c.getClm().getSelectedRow());
-
-				switch (com.getName()) {
-				case "Direction": 
-					ViewEast.getInstance().reset();
-					String[][] str = new String[][] { { "Winkel:", String.valueOf(((Direction) com).getDegree()) } }; 
-					String[] tmp = new String[] { "", "" };
-					table = new JTable(str, tmp);
-					jcp = new JScrollPane(table);
-					ViewEast.getInstance().add(jcp);
-					ViewEast.getInstance().setVisible();
-					System.out.println("bin ich hier");
-					break;
-				case "Gear":
-					ViewEast.getInstance().reset();
-					String[][] str1 = new String[][] { { "Geschwindigkeit:", String.valueOf(((Gear) com).getSpeed()) },
-							{ "Dauer:", String.valueOf(((Gear) com).getDuration()) } };
-					String[] tmp1 = new String[] { "", "" };
-					table = new JTable(str1, tmp1);
-					jcp = new JScrollPane(table);
-					ViewEast.getInstance().add(jcp);
-					ViewEast.getInstance().setVisible();
-					break;
-				case "Pause":
-					ViewEast.getInstance().reset();
-					String[][] str2 = new String[][] { { "Dauer:", String.valueOf(((Pause) com).getDuration()) } };
-					String[] tmp2 = new String[] { "", "" };
-					table = new JTable(str2, tmp2);
-					jcp = new JScrollPane(table);
-					ViewEast.getInstance().add(jcp);
-					ViewEast.getInstance().setVisible();
-					break;
-				case "Repetition":
-					ViewEast.getInstance().reset();
-					String[][] str3 = new String[][] {
-							{ "Anzahl Schritte", String.valueOf(((Repetition) com).getNrSteps()) },
-							{ "Wiederholungen", String.valueOf(((Repetition) com).getNrRepetitions()) } };
-					String[] tmp3 = new String[] { "", "" };
-					table = new JTable(str3, tmp3);
-					jcp = new JScrollPane(table);
-					ViewEast.getInstance().add(jcp);
-					ViewEast.getInstance().setVisible();
-					break;
-				default:
-					System.out.println("Fehler");
-					break;
-				}
-
+				ViewEast.getInstance().changed();
 			}
 
 			public void mouseEntered(MouseEvent arg0) {
@@ -98,13 +75,13 @@ public class ViewEast extends JPanel {
 			}
 
 		});
-
+		// übergibt die geänderten Werte an das command Objekt der Liste
 		save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Command com = c.getControlProcess().get(c.getClm().getSelectedRow());
 
 				switch (com.getName()) {
-				case "Direction": 
+				case "Direction":
 					((Direction) com).setDegree(Integer.valueOf((String) table.getValueAt(0, 1)));
 					ViewMiddle.getInstance().setVisible();
 					break;
@@ -131,9 +108,8 @@ public class ViewEast extends JPanel {
 	}
 
 	/**
-	 * Erzeugt ein Objekt von ConrolModel, wenn noch keins vorhanden ist.
 	 * 
-	 * @return Gibt genau eine Instanz von ControlModel zurück.
+	 * @return Gibt genau eine Instanz von ViewEast zurück.
 	 */
 
 	public static ViewEast getInstance() {
@@ -144,16 +120,83 @@ public class ViewEast extends JPanel {
 			return instance;
 	}
 
+	/**
+	 * resetet das rechte Fenster
+	 */
 	public void setVisible() {
 		ViewEast.getInstance().setVisible(false);
 		ViewEast.getInstance().setVisible(true);
 	}
 
+	/**
+	 * löscht die alte Tabelle
+	 */
 	public void reset() {
 		this.remove(jcp);
 	}
-	
-	public void updateTableEast(){
+
+	/**
+	 * zeichnet die rechte Tabelle neu
+	 */
+	public void updateTableEast() {
 		table.updateUI();
+	}
+
+	/**
+	 * Holt das markierte Objekt und zeigt es in der rechten Tabelle an
+	 */
+	public void changed() {
+		Command com = c.getControlProcess().get(c.getClm().getSelectedRow());
+		if (com == null) {
+			ViewEast.getInstance().reset();
+
+			String[][] str = new String[][] {};
+			table = new JTable(str, tmp);
+			jcp = new JScrollPane(table);
+			ViewEast.getInstance().add(jcp);
+			ViewEast.getInstance().setVisible();
+		} else {
+			switch (com.getName()) {
+			case "Direction":
+				ViewEast.getInstance().reset();
+				String[][] str = new String[][] { { "Winkel:", String.valueOf(((Direction) com).getDegree()) } };
+				table = new JTable(str, tmp);
+				jcp = new JScrollPane(table);
+				ViewEast.getInstance().add(jcp);
+				ViewEast.getInstance().setVisible();
+				System.out.println("bin ich hier");
+				break;
+			case "Gear":
+				ViewEast.getInstance().reset();
+				String[][] str1 = new String[][] { { "Geschwindigkeit:", String.valueOf(((Gear) com).getSpeed()) },
+						{ "Dauer:", String.valueOf(((Gear) com).getDuration()) } };
+				table = new JTable(str1, tmp);
+				jcp = new JScrollPane(table);
+				ViewEast.getInstance().add(jcp);
+				ViewEast.getInstance().setVisible();
+				break;
+			case "Pause":
+				ViewEast.getInstance().reset();
+				String[][] str2 = new String[][] { { "Dauer:", String.valueOf(((Pause) com).getDuration()) } };
+				table = new JTable(str2, tmp);
+				jcp = new JScrollPane(table);
+				ViewEast.getInstance().add(jcp);
+				ViewEast.getInstance().setVisible();
+				break;
+			case "Repetition":
+				ViewEast.getInstance().reset();
+				String[][] str3 = new String[][] {
+						{ "Anzahl Schritte", String.valueOf(((Repetition) com).getNrSteps()) },
+						{ "Wiederholungen", String.valueOf(((Repetition) com).getNrRepetitions()) } };
+				table = new JTable(str3, tmp);
+				jcp = new JScrollPane(table);
+				ViewEast.getInstance().add(jcp);
+				ViewEast.getInstance().setVisible();
+				break;
+			default:
+				System.out.println("Fehler");
+				break;
+			}
+		}
 	}
 }

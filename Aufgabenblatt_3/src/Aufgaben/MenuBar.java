@@ -12,6 +12,12 @@ import hsrt.mec.controldeveloper.core.com.ComPort;
 import hsrt.mec.controldeveloper.core.com.ComPortHandler;
 import hsrt.mec.controldeveloper.io.SerialUSB;
 
+/**
+ * Menüleiste des Hauptfensters
+ * 
+ * @author Andreas & Jan
+ * @version 1.0
+ */
 public class MenuBar extends JMenuBar {
 	private ControlModel cm;
 
@@ -23,20 +29,15 @@ public class MenuBar extends JMenuBar {
 	private JMenuItem load = new JMenuItem("Datei laden");
 	private JMenuItem save = new JMenuItem("Datei speichern");
 	private JMenuItem delete = new JMenuItem("Liste löschen");
+	private JMenuItem test;
+	private SerialUSB usb;
 	private JMenuItem about = new JMenuItem("About");
 	ComPortHandler cph = new ComPortHandler();
 	ComPort[] cp = new ComPort[10];
-	// neu Jan
 
-	/*
-	 * 
-	 * //setzt usb port mit bestimmter id Vector<ICommand> commandlist = new
-	 * Vector<ICommand>(); commandlist.add(null); TextFile textFile = new
-	 * TextFile(myFile, false); ch.start(commandlist, textFile); //alternativ
-	 * statt textFile usb ch.stop();
+	/**
+	 * Konstruktor der Menüleiste
 	 */
-	// Ende neu Jan
-
 	public MenuBar() {
 		this.cm = ControlModel.getInstance();
 
@@ -44,24 +45,12 @@ public class MenuBar extends JMenuBar {
 		file.add(load);
 		file.add(save);
 		file.add(delete);
-		
-		this.add(port);
-		
-		info.add(about);
-		
-		
-		cp = ComPortHandler.getPorts();// Liefert alle verfügbaren ports zurück
-		// System.out.println(cp[0].getName());
-		for (int i = 0; i < cp.length; i++) {
-			port.add(cp[i].getName());
-			System.out.println("hier auch");
-		}
-		System.out.println("hier war ich");
-		System.out.println(cp.length);
-		this.add(info);
 
-		// cp[1].getId(); //liefert ID des ersten USB ports
-		// SerialUSB usb = new SerialUSB(cp[1]);
+		this.add(port);
+
+		info.add(about);
+
+		this.add(info);
 
 		// MenuItem TextDatei laden
 		load.addActionListener(new ActionListener() {
@@ -90,30 +79,35 @@ public class MenuBar extends JMenuBar {
 				ControlModel.getInstance().getClm().dataChanged();
 			}
 		});
-		
+
 		ComPort[] ports = cph.getPorts();
-		System.out.println("Laenge " +ports.length);
-		for(ComPort wire : ports){
+		System.out.println("Laenge " + ports.length);
+		for (ComPort wire : ports) {
 			JMenuItem item = new JMenuItem(wire.getName());
 			port.add(item);
-			item.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e){
+			item.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 					cm.setSerial(new SerialUSB(wire));
 					ViewSouth.getInstance().addText("Selected Port: " + wire.getName());
 					System.out.println("ActionPerformed");
 				}
 			});
 		}
-		
+
 		about.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e){
-				JOptionPane.showOptionDialog(null, "© Jan Engling und Andreas Sautter\n Programm für eines nicht fahrtüchtigen Rovers" ,"Info", JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null,ports, "fefhueh");
-				System.out.println("nhcuheiceji");
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showOptionDialog(null,
+						"© Jan Engling und Andreas Sautter\n Programm für einen nicht fahrtüchtigen Rovers", "Info",
+						JOptionPane.OK_OPTION, JOptionPane.INFORMATION_MESSAGE, null, ports, "fefhueh");
 			}
 		});
 
 	}
 
+	/**
+	 * 
+	 * @return Liefert genau ein Objekt der Menüleiste zurück
+	 */
 	public static JMenuBar getInstance() {
 		if (instance == null) {
 			instance = new MenuBar();

@@ -8,49 +8,42 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class ViewMiddle extends JPanel{
+/**
+ * Mittleres Fenster
+ * 
+ * @author Andreas & Jan
+ * @version 1.0
+ */
+public class ViewMiddle extends JPanel {
 	private ControlModel c;
 	private static ViewMiddle instance = null;
-
 	private JTable table;
-	//private CommandListModel model;
-	
-	public ViewMiddle(){
-		this.c = ControlModel.getInstance();
-		
-		this.setLayout( new BorderLayout());
-        this.setBackground(Color.BLUE);
-        this.add(new MiddleButton(), BorderLayout.SOUTH);
-        
-        
-        // Tabelle wird erstellte und das CommandListModel wird übergeben 
-        // Danach an das Panel addden
-        this.table = new JTable(c.getClm());
-        this.add(new JScrollPane(table),BorderLayout.CENTER);
-        
-        //table.setDefaultRenderer(Object.class, new MyTableCellRenderer( ));
-        
-        table.setRowHeight(30);
-        
-        c.getClm().setTable(table);
-        
-        //c.getControlProcess().remove(0);
-		//c.getClm().dataChanged();
-       
-        /*
-        JButton b = new JButton("test");
-        this.add(b, BorderLayout.NORTH);
-        b.addActionListener(new ActionListener(){
-        	public void actionPerformed(ActionEvent a){
-        		System.out.println("Zeile: " + table.getSelectedRow());
-        	}
-        });
-        */
-	}
+
 	/**
-	 * Erzeugt ein Objekt von ConrolModel, wenn noch keins vorhanden ist.
+	 * Konstruktor des mittleren Fensters
+	 */
+	public ViewMiddle() {
+		this.c = ControlModel.getInstance();
+
+		this.setLayout(new BorderLayout());
+		this.setBackground(Color.BLUE);
+		this.add(new MiddleButton(), BorderLayout.SOUTH);
+
+		// Tabelle wird erstellte und das CommandListModel wird übergeben
+		// Danach an das Panel addden
+		this.table = new JTable(c.getClm());
+		this.add(new JScrollPane(table), BorderLayout.CENTER);
+
+		table.setRowHeight(30);
+
+		c.getClm().setTable(table);
+
+	}
+
+	/**
 	 * 
-	 * @return Gibt genau eine Instanz von ControlModel zurück.
+	 * 
+	 * @return Gibt genau eine Instanz von ViewMiddle zurück.
 	 */
 
 	public static ViewMiddle getInstance() {
@@ -60,14 +53,26 @@ public class ViewMiddle extends JPanel{
 		} else
 			return instance;
 	}
-	public void setVisible(){
+
+	/**
+	 * resetet die Anzeige des mittleren Fensters
+	 */
+	public void setVisible() {
 		ViewMiddle.getInstance().setVisible(false);
 		ViewMiddle.getInstance().setVisible(true);
 	}
-	public JTable getTable(){
+
+	/**
+	 * Gibt die Tabelle zurück
+	 */
+	public JTable getTable() {
 		return table;
 	}
-	public void resetTableview(){
+
+	/**
+	 * resetet die Anzeige der Tabelle
+	 */
+	public void resetTableview() {
 		table.setVisible(false);
 		table.setVisible(true);
 	}

@@ -18,6 +18,12 @@ import javax.swing.JTextArea;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+/**
+ * Linkes Fenster der Anzeige
+ * 
+ * @author Andreas & Jan
+ * @version 1.0
+ */
 public class ViewWest extends JPanel {
 	private static ViewWest instance = null;
 	private JList<String> l = new JList<String>();
@@ -25,97 +31,53 @@ public class ViewWest extends JPanel {
 	ControlModel cm = ControlModel.getInstance();
 	String[] st = cm.getCommandTypes();
 	JTextArea txt = ViewSouth.getText();
-	/*
-	 * public void setSelectedItem( int index ){//Ausgabe der Listenwerte if (
-	 * index<0 || index>items.length ) return;
-	 * 
-	 * this.index= index; System.out.println( items[this.index] ); }
+
+	/**
+	 * Konstruktor der linken Tabelle
 	 */
-	// Konstruktor
 	private ViewWest() {
 		this.setLayout(new BorderLayout());
 		JButton b = new JButton("Add");
-		JButton test = new JButton ("Test");
-		
+		JButton test = new JButton("Test");
+
 		Vector<Vector> rowdata = new Vector<Vector>();
-		for(int i=0; i<cm.getCommandTypes().length; i++){
+		for (int i = 0; i < cm.getCommandTypes().length; i++) {
 			Vector<String> tmp = new Vector<String>();
 			tmp.addElement(cm.getCommandTypes()[i]);
 			rowdata.addElement(tmp);
 		}
-		/*
-		eisns.addElement(cm.getCommandTypes()[0]);
-		Vector<String> zwei = new Vector<String>();
-		zwei.addElement(cm.getCommandTypes()[1]);
-		eisns.addElement(cm.getCommandTypes()[2]);
-		rowdata.addElement(eisns);
-		rowdata.addElement(zwei);*/
-		//System.out.println("Daten" + rowdata.size());
+
 		Vector<String> namen = new Vector<String>();
 		namen.add("Types");
-		this.table=new JTable(rowdata, namen);
-		
-		//String[][] str = new String[][]{{"Direction"},{"Gear"}};
-		//str[1][1] = {{"hi"},{"d"}};
-		//String[][0] str1 = cm.getCommandTypes();
-		//String[] str2 = new String[]{"Types"};
-		//this.table=new JTable(str, str2);
-		 ;
-		this.add(new JScrollPane(table),BorderLayout.CENTER);
-		
-		/*
-		l.setListData(cm.getCommandTypes());
-		l.setSelectionForeground(Color.GRAY);
-		l.setSelectionBackground(Color.orange);
-		l.setSelectedIndex(2);
+		this.table = new JTable(rowdata, namen);
+		this.add(new JScrollPane(table), BorderLayout.CENTER);
 
-		this.add(l, BorderLayout.CENTER);*/
-		this.add(b, BorderLayout.SOUTH);/*
-		//this.add(test, BorderLayout.NORTH);	//Add Button
-		test.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent a) {
-				System.out.println(cm.getControlProcess().readList());
-				System.out.println("funktioniert");
-			}
-		});*/
+		this.add(b, BorderLayout.SOUTH);
+
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent a) {
-				//System.out.println("Tada");
 				System.out.println(table.getSelectedRow());
-				
-			// Wenn kein Element ausgewählt ist gibt getSelectedRow eine -1 zurück
-				if (table.getSelectedRow() != -1 ){
+
+				// Wenn kein Element ausgewählt ist gibt getSelectedRow eine -1
+				// zurück
+				if (table.getSelectedRow() != -1) {
 					// Ausgabe Konsole
-					txt.setText(st[table.getSelectedRow()].toString());
-					// CommandType erstellen und daraus ein bestimmtes Command erzeugen 
+					txt.setText("new" + st[table.getSelectedRow()].toString());
+					// CommandType erstellen und daraus ein bestimmtes Command
+					// erzeugen
 					CommandType ct = new CommandType(st[table.getSelectedRow()].toString());
 					cm.getControlProcess().add(ct.createInstance());
 				}
 			}
 		});
-		
-		/*
-		l.addListSelectionListener(new ListSelectionListener() {// ActionListener
-			public void valueChanged(ListSelectionEvent e) {
-				if (!e.getValueIsAdjusting()) {
-					System.out.println(l.getSelectedIndex()); // Hier kann neues
-																// Command
-																// angelegt
-																// werden
-					System.out.println(st[l.getSelectedIndex()].toString());
-					txt.setText(st[l.getSelectedIndex()].toString());
-					cm.getControlProcess().add(new CommandType(st[l.getSelectedIndex()].toString()).createInstance());
-				}
-			}
-		});*/
+
 	}
 
 	/**
-	 * Erzeugt ein Objekt von ConrolModel, wenn noch keins vorhanden ist.
 	 * 
-	 * @return Gibt genau eine Instanz von ControlModel zurück.
+	 * @return Gibt genau eine Instanz von ViewWest zurück.
 	 */
-	
+
 	public static ViewWest getInstance() {
 		if (instance == null) {
 			instance = new ViewWest();
@@ -125,4 +87,3 @@ public class ViewWest extends JPanel {
 	}
 
 }
-

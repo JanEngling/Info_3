@@ -13,45 +13,35 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+/**
+ * Container des Hauptfensters
+ * 
+ * @author Andreas & Jan
+ * @version 1.0
+ */
 public class MainWindow extends JFrame {
 	private ControlModel c;
-
 	private JFrame gui = new JFrame("Control-Developer");
 	private JPanel panel = new JPanel();
-
 	private GridBagConstraints middle = new GridBagConstraints();
 	private GridBagConstraints east = new GridBagConstraints();
 	private GridBagConstraints west = new GridBagConstraints();
 	private GridBagConstraints south = new GridBagConstraints();
 
-	//private ViewMiddle vm = new ViewMiddle();
-	//private ViewEast ve = new ViewEast();
 	ViewMiddle vm = ViewMiddle.getInstance();
 	ViewEast ve = ViewEast.getInstance();
 	ViewSouth vs = ViewSouth.getInstance();
-	ViewWest vw = ViewWest.getInstance();	
+	ViewWest vw = ViewWest.getInstance();
 	ControlModel cm = ControlModel.getInstance();
-	
+
 	JMenuBar mb = MenuBar.getInstance();
 
+	/**
+	 * Fügt Panels an richtiger Position in das Fenster ein
+	 */
 	public void mainWindow() {
 		this.c = cm;
-		//gui.setLayout(new GridBagLayout()); // setzt Layout der gui
-		// GridBagConstraints ct = new GridBagConstraints();
-		// vw.setSize(100, 100);
 
-		// ct.fill = GridBagConstraints.BOTH;
-		/*
-		 * JList<String> l = new JList<String>(); l.setListData(new String[]
-		 * {"hallo", "tui"}); l.setSelectionForeground(Color.GRAY);
-		 * l.setSelectionBackground(Color.orange); l.setSelectedIndex(2);
-		 */
-
-		/*
-		 * ct.gridx=0; ct.gridy=0; ct.gridwidth=0; gui.add(vw,ct);
-		 * vw.setVisible(true); ct.gridx=4; ct.gridy=0; ct.gridwidth=2;
-		 * gui.add(ve, ct); ve.setVisible(true);
-		 */
 		// Fenstergröße festlegen
 		gui.setSize(1980, 1080);
 		gui.setMinimumSize(new Dimension(1600, 1200));
@@ -76,7 +66,7 @@ public class MainWindow extends JFrame {
 		panel.add(vm, middle);
 		vm.setVisible(true);
 		vm.setBackground(Color.BLUE);
-		
+
 		// Westen CommandTypes
 		west.anchor = GridBagConstraints.PAGE_START;
 		west.ipadx = 300;
@@ -87,7 +77,7 @@ public class MainWindow extends JFrame {
 		west.gridy = 0;
 		panel.add(vw, west);
 		vw.setVisible(true);
-		
+
 		// Osten Bedienfeld
 		east.anchor = GridBagConstraints.PAGE_START;
 		east.ipadx = 300;
@@ -98,7 +88,7 @@ public class MainWindow extends JFrame {
 		east.gridy = 0;
 		panel.add(ve, east);
 		ve.setVisible(true);
-		
+
 		// Süden Anzeigefeld
 		south.anchor = GridBagConstraints.PAGE_END;
 		south.fill = GridBagConstraints.HORIZONTAL;
@@ -111,10 +101,9 @@ public class MainWindow extends JFrame {
 		south.gridy = 1;
 		panel.add(vs, south);
 		vs.setVisible(true);
+
 		
-		// linkes fesnter jinzufügen
-		// ViewWest vw = new ViewWest();
-		// Fenster sichtbar machen
+		gui.pack();
 		gui.setVisible(true);
 
 	}

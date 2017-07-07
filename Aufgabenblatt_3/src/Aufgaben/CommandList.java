@@ -15,6 +15,9 @@ public class CommandList {
 	private Element root = null;
 	private CommandListModel clm = null;
 	
+	/**
+	 * @param clm Setzt übergebenes ControlModel als Controlodel
+	 */
 	public CommandList(CommandListModel clm){
 		this.clm = clm;
 	}
@@ -40,7 +43,9 @@ public class CommandList {
 			}		
 	}
 	
-	
+	/**
+	 * Gibt Die Gesamte Liste der Commandos auf Konsole aus
+	 */
 	public void print(){
 		Element aktPos = root;
 		for (int i = groeße(root); i != 0; i--) {	

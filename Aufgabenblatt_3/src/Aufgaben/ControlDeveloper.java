@@ -53,35 +53,6 @@ public class ControlDeveloper {
 		c.getControlProcess().add(new Gear(4,5));
 		c.getControlProcess().add(new Repetition(3,5));
 		
-		/*
-
-		c.save(myFile);
-		for (int i = 0; c.getControlProcess().get(i) != null; i++) {
-			System.out.println(c.getControlProcess().get(i).toString());
-		}
-		c.load(myFile);
-		for (int i = 0; c.getControlProcess().get(i) != null; i++) {
-			System.out.println(c.getControlProcess().get(i).toString());
-		}
-		
-		*/
-		
-		//neu Jan
-		/*
-		ComPortHandler cph = new ComPortHandler();
-		ComPort[] cp = new ComPort[10];
-		
-		cp = ComPortHandler.getPorts();	//Liefert alle verfügbaren ports zurück
-		cp[1].getId();	//liefert ID des ersten USB ports
-		SerialUSB usb = new SerialUSB(cp[1]);	//setzt usb port mit bestimmter id
-		Vector<ICommand> commandlist = new Vector<ICommand>();
-		commandlist.add(null);
-		TextFile textFile = new TextFile(myFile, false);
-		ch.start(commandlist, textFile);	//alternativ statt textFile usb
-		ch.stop();
-		*/
-		//Ende neu Jan
-		
 		//GUI
 		gui.mainWindow();
 	}

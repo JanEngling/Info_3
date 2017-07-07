@@ -1,7 +1,5 @@
 package Aufgaben;
 
-import org.omg.Messaging.SyncScopeHelper;
-
 import hsrt.mec.controldeveloper.core.com.command.ICommand;
 
 /**
@@ -27,8 +25,5 @@ public abstract class Command implements ICommand {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Command getger(){
-		return this;
-	}
-	
+
 }

@@ -1,3 +1,6 @@
 Direction:4
 Pause:4.0
+Gear:4:5.0
+Repetition:3:5
+Pause:1000.0
 Ende

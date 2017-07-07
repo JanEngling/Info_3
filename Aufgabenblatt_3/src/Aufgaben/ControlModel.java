@@ -8,6 +8,7 @@ package Aufgaben;
  * @since JDK 1.8
  */
 import java.io.File;
+
 import java.util.Vector;
 
 import hsrt.mec.controldeveloper.core.com.ComHandler;
@@ -16,15 +17,19 @@ import hsrt.mec.controldeveloper.core.com.command.ICommand;
 import hsrt.mec.controldeveloper.io.IOType;
 import hsrt.mec.controldeveloper.io.TextFile;
 
+/**
+ * Verwaltet die Funktionalitäten der beiden Listen
+ * 
+ * @author Andreas & Jan
+ * @version 1.0
+ */
+
 public class ControlModel implements IComListener {
 
 	private static ControlModel instance = null;
 	private String[] commandTypes = new String[4];
 	private CommandListModel clm = new CommandListModel();
-
-	// private CommandType [] commandTypes;
 	private CommandList controlProcess = new CommandList(clm);
-
 	private ComHandler comHandler = ComHandler.getInstance();
 	private IOType serial;
 
@@ -35,9 +40,11 @@ public class ControlModel implements IComListener {
 		comHandler.register(this);
 	}
 
+	/**
+	 * Arbeitet die Liste der Reihe nach ab und gibt sie auf der Konsole aus
+	 */
 	public void start() {
 		Vector<ICommand> commandlist = new Vector<ICommand>();
-		// commandlist.add(null);
 		for (int i = 0; controlProcess.get(i) != null; i++) {
 			commandlist.addElement(controlProcess.get(i));
 		}
@@ -45,24 +52,25 @@ public class ControlModel implements IComListener {
 		File myFile = new File("Ausgabe.txt");
 		TextFile textFile = new TextFile(myFile, false);
 		comHandler.start(commandlist, textFile); // alternativ statt textFile
-													// usb
-		// comHandler.start(commandlist, serial);
 	}
 
+	/**
+	 * Stop die Abarbeitung der Liste
+	 */
 	public void stop() {
 		comHandler.stop();
 	}
 
 	/**
-	 * @return the serial
+	 * @return Gibt Serial zurück
 	 */
 	public IOType getSerial() {
 		return serial;
 	}
 
 	/**
-	 * @param serial
-	 *            the serial to set
+	 * @param setzt
+	 *            übergebenen Serial als serial
 	 */
 	public void setSerial(IOType serial) {
 		this.serial = serial;
@@ -82,23 +90,11 @@ public class ControlModel implements IComListener {
 			return instance;
 	}
 
-	/*
+	/**
+	 * Erzeugt alle möglichen Commantypes
 	 * 
-	 * public CommandType[] getCommandTypes() { commandTypes[0] = new
-	 * CommandType("Direction"); commandTypes[1] = new CommandType("Gear");
-	 * commandTypes[2] = new CommandType("Repetition"); commandTypes[3] = new
-	 * CommandType("Pause"); return commandTypes; }
-	 * 
-	 * /** Befüllt erste Liste bzw. Array mit allen möglichen CommandType
-	 * Objekten (4)
+	 * @return gibt Array der erzeugten CommandTypes zurück
 	 */
-	/*
-	 * public void createCommandTypes() { commandTypes[0] = new
-	 * CommandType("Direction"); commandTypes[1] = new CommandType("Gear");
-	 * commandTypes[2] = new CommandType("Repetition"); commandTypes[3] = new
-	 * CommandType("Pause"); }
-	 */
-
 	public String[] getCommandTypes() {
 		commandTypes[0] = new String("Direction");
 		commandTypes[1] = new String("Gear");
@@ -200,11 +196,19 @@ public class ControlModel implements IComListener {
 	}
 
 	// Grooesse der Liste bestimmen
+	/**
+	 * 
+	 * @return Gibt größe der Liste zurück
+	 */
 	public int getControlProcessGroesse() {
 		return controlProcess.groeße();
 	}
 
 	// Zugriff auf CommandListModel
+	/**
+	 * 
+	 * @return Gibt CommandListmodel zurück
+	 */
 	public CommandListModel getClm() {
 		return clm;
 	}

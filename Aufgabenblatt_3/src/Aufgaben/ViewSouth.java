@@ -6,30 +6,43 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+/**
+ * Unteres Fenster
+ * 
+ * @author Andreas & Jan
+ * @version 1.0
+ */
 public class ViewSouth extends JPanel {
 
 	private ControlModel c;
-	private static JTextArea txtara = new JTextArea(10,20);
+	private static JTextArea txtara = new JTextArea(10, 20);
 	private JScrollPane scroll = new JScrollPane(txtara);
 	private static ViewSouth instance = null;
 
+	/**
+	 * KOnstruktor des unteren Fensters
+	 */
 	public ViewSouth() {
 		this.c = ControlModel.getInstance();
 
-		//this.txtara = new JTextArea(10, 20);
+		// this.txtara = new JTextArea(10, 20);
 		this.add(txtara);
 		this.setBackground(Color.WHITE);
 
 	}
-	
-	public void addText(String ausgabe){
+
+	/**
+	 * 
+	 * @param Schreibt
+	 *            den übergenene String in das Ausgabefenster
+	 */
+	public void addText(String ausgabe) {
 		this.txtara.append(ausgabe + "\n");
 		this.scroll.getVerticalScrollBar().setValue(this.scroll.getVerticalScrollBar().getMaximum());
 	}
+
 	/**
-	 * Erzeugt ein Objekt von ConrolModel, wenn noch keins vorhanden ist.
-	 * 
-	 * @return Gibt genau eine Instanz von ControlModel zurück.
+	 * @return Gibt genau eine Instanz von ViewSouth zurück.
 	 */
 
 	public static ViewSouth getInstance() {
@@ -39,6 +52,11 @@ public class ViewSouth extends JPanel {
 		} else
 			return instance;
 	}
+
+	/**
+	 * 
+	 * @return Gibt genau ein Objekt des Textfeldes zurück
+	 */
 	public static JTextArea getText() {
 		if (txtara == null) {
 			txtara = new JTextArea(10, 20);
