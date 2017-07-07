@@ -53,6 +53,8 @@ public class ViewWest extends JPanel {
 		this.add(new JScrollPane(table), BorderLayout.CENTER);
 
 		this.add(b, BorderLayout.SOUTH);
+		
+		table.setRowHeight(25);
 
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent a) {

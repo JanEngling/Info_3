@@ -83,20 +83,24 @@ public class ViewEast extends JPanel {
 				switch (com.getName()) {
 				case "Direction":
 					((Direction) com).setDegree(Integer.valueOf((String) table.getValueAt(0, 1)));
+					table.setRowHeight(25);
 					ViewMiddle.getInstance().setVisible();
 					break;
 				case "Gear":
 					((Gear) com).setSpeed(Integer.valueOf((String) table.getValueAt(0, 1)));
 					((Gear) com).setDuration(Double.valueOf((String) table.getValueAt(1, 1)));
+					table.setRowHeight(25);
 					ViewMiddle.getInstance().setVisible();
 					break;
 				case "Pause":
 					((Pause) com).setDuration(Double.valueOf((String) table.getValueAt(0, 1)));
+					table.setRowHeight(25);
 					ViewMiddle.getInstance().setVisible();
 					break;
 				case "Repetition":
 					((Repetition) com).setNrSteps(Integer.valueOf((String) table.getValueAt(0, 1)));
 					((Repetition) com).setNrRepetitions(Integer.valueOf((String) table.getValueAt(1, 1)));
+					table.setRowHeight(25);
 					ViewMiddle.getInstance().setVisible();
 					break;
 				default:
@@ -154,6 +158,7 @@ public class ViewEast extends JPanel {
 			table = new JTable(str, tmp);
 			jcp = new JScrollPane(table);
 			ViewEast.getInstance().add(jcp);
+			table.setRowHeight(25);
 			ViewEast.getInstance().setVisible();
 		} else {
 			switch (com.getName()) {
@@ -163,6 +168,7 @@ public class ViewEast extends JPanel {
 				table = new JTable(str, tmp);
 				jcp = new JScrollPane(table);
 				ViewEast.getInstance().add(jcp);
+				table.setRowHeight(25);
 				ViewEast.getInstance().setVisible();
 				System.out.println("bin ich hier");
 				break;
@@ -173,6 +179,7 @@ public class ViewEast extends JPanel {
 				table = new JTable(str1, tmp);
 				jcp = new JScrollPane(table);
 				ViewEast.getInstance().add(jcp);
+				table.setRowHeight(25);
 				ViewEast.getInstance().setVisible();
 				break;
 			case "Pause":
@@ -181,6 +188,7 @@ public class ViewEast extends JPanel {
 				table = new JTable(str2, tmp);
 				jcp = new JScrollPane(table);
 				ViewEast.getInstance().add(jcp);
+				table.setRowHeight(25);
 				ViewEast.getInstance().setVisible();
 				break;
 			case "Repetition":
@@ -191,6 +199,7 @@ public class ViewEast extends JPanel {
 				table = new JTable(str3, tmp);
 				jcp = new JScrollPane(table);
 				ViewEast.getInstance().add(jcp);
+				table.setRowHeight(25);
 				ViewEast.getInstance().setVisible();
 				break;
 			default:

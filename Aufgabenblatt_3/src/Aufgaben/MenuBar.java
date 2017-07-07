@@ -3,10 +3,13 @@ package Aufgaben;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import hsrt.mec.controldeveloper.core.com.ComPort;
 import hsrt.mec.controldeveloper.core.com.ComPortHandler;
@@ -29,6 +32,11 @@ public class MenuBar extends JMenuBar {
 	private JMenuItem load = new JMenuItem("Datei laden");
 	private JMenuItem save = new JMenuItem("Datei speichern");
 	private JMenuItem delete = new JMenuItem("Liste löschen");
+	
+    FileFilter filter = new FileNameExtensionFilter(".txt", "txt");
+    JFileChooser chooser = new JFileChooser("d:/Documents/Studium/3. Semester/Informatik/SS_17_Praktikum/Info_3/Aufgabenblatt_3");
+	
+	
 	private JMenuItem test;
 	private SerialUSB usb;
 	private JMenuItem about = new JMenuItem("About");
@@ -56,7 +64,9 @@ public class MenuBar extends JMenuBar {
 		load.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Load");
-				ControlModel.getInstance().load(ControlDeveloper.myFile);
+				chooser.addChoosableFileFilter(filter);
+				chooser.showDialog(null, "Datei auswählen");
+				ControlModel.getInstance().load(chooser.getSelectedFile());
 				ControlModel.getInstance().getClm().dataChanged();
 			}
 		});
@@ -65,7 +75,9 @@ public class MenuBar extends JMenuBar {
 		save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Saved");
-				ControlModel.getInstance().save(ControlDeveloper.myFile);
+				chooser.addChoosableFileFilter(filter);
+				chooser.showDialog(null, "Datei auswählen");
+				ControlModel.getInstance().save(chooser.getSelectedFile());
 				ControlModel.getInstance().getControlProcess().deleteList();
 				ControlModel.getInstance().getClm().dataChanged();
 			}

@@ -103,7 +103,7 @@ public class MainWindow extends JFrame {
 		vs.setVisible(true);
 
 		
-		gui.pack();
+		//gui.pack();
 		gui.setVisible(true);
 
 	}
